@@ -6,6 +6,18 @@ export default {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'h1': '56px',
+        'h2': '48px',
+        'h3': '40px',
+        'h4': '32px',
+        'h5': '24px',
+        'h6': '18px',
+        'subtitle': '16px',
+        'body': '14px',
+        'action': '15px',
+        'caption': '12px',
+      },
       colors: {
         brand_1: '#16377D',
         brand_2: '#FC5056',
