@@ -1,4 +1,3 @@
-import React from 'react'
 import Titles from '../../../../components/Titles'
 import InputField from '../../../../components/InputField'
 import SubmitButton from '../../../../components/SubmitButton';
@@ -7,8 +6,16 @@ import { FaLock, FaFacebook } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FormProps } from './types';
+import { signWithGoogle } from '../../../../services/firebase/firebaseService';
 
 const Form = ({ title, message, handleSubmit,buttonText, changeMessage, handleClick, changeClickMessage }: FormProps) => {
+  const handleGoogleLogin = async() => {
+    const { user , error: firebaseError} = await signWithGoogle();
+    return firebaseError || !user 
+      ? console.log(firebaseError)
+      : console.log(user);
+  }
+
   return <form className='w-[35%] min-h-[80%] p-10 bg-surface border border-black rounded flex flex-col justify-between'>
     <Titles colorTitle='black' subtitle='Trisog' title={title}/>
     <h2 className='text-center text-h6 font-bold'>{message}</h2>
@@ -16,7 +23,7 @@ const Form = ({ title, message, handleSubmit,buttonText, changeMessage, handleCl
     <InputField Icon={FaLock} onChange={() => console.log('')} placeholder='Password...'/>
     <SubmitButton onClick={handleSubmit} text={buttonText}/>
     <div className='flex gap-6'>
-      <IconButton Icon={FcGoogle} handleClick={() => console.log('google')}/>
+      <IconButton Icon={FcGoogle} handleClick={handleGoogleLogin}/>
       <IconButton Icon={FaFacebook}  handleClick={() => console.log('facebook')}/>
     </div>
     <p className='flex justify-center gap-4 font-semibold'>{changeMessage}
