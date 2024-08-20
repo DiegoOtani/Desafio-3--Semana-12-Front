@@ -4,7 +4,7 @@ import Form from './components/Form/Form';
 const Login = () => {
   const [ haveLogin, setHaveLogin ] = useState<boolean>(true);
 
-  return <main className='w-full h-full flex flex-col items-center justify-center'>
+  return <main className="w-full h-full flex flex-col items-center justify-center bg-[url(https://www.vestibulandoweb.com.br/wp-content/uploads/2024/01/viagem-ia.jpg)] bg-cover bg-center">
     {haveLogin ? (
       <Form 
       title='Sign in'
