@@ -7,9 +7,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        price: ['Lobster', 'cursive'],
-        title: ['Work Sans'],
-        body: ['Inter']
+        price: 'Kaushan',
+        title: 'Work Sans',
+        body: 'Inter',
       },
       fontSize: {
         'h1': '56px',
