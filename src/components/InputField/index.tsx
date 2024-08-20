@@ -1,13 +1,14 @@
 import React from 'react'
 import { InputFieldType } from './types';
 
-const InputField = ({ inputName, Icon, placeholder }: InputFieldType) => {
+const InputField = ({ onChange, inputName, Icon, placeholder }: InputFieldType) => {
   return <div className='w-full'>
-      <p className='text-secondary font-semibold'>{inputName}</p>
-      <div className='flex justify-start items-center border font-semibold rounded px-2 py-1'>
+      <p className='text-secondary font-price font-semibold italic'>{inputName}</p>
+      <div className='flex justify-start items-center border font-normal rounded px-2 py-1 text-secondary-40'>
         <Icon />
         <input 
-          className='px-1'
+          onChange={onChange}
+          className='px-1 focus:outline-none'
           type="text" 
           placeholder={placeholder}
         />

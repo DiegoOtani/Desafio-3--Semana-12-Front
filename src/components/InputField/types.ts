@@ -1,7 +1,8 @@
 import { IconType } from "react-icons";
 
 export type InputFieldType = {
-  inputName: string;
+  onChange: () => void;
+  inputName?: string;
   Icon: IconType;
   placeholder: string;
 }

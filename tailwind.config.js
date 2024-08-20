@@ -28,6 +28,8 @@ export default {
         brand_2: '#FC5056',
         brand_3: '#F8D448',
         secondary: '#051036',
+        'secondary-80': 'rgba(5, 16, 54, 0.8)',
+        'secondary-40': 'rgba(5, 16, 54, 0.4)',
         surface: '#F7F8F9'
       },
     },
