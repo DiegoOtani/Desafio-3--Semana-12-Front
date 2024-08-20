@@ -6,6 +6,11 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        price: ['Lobster', 'cursive'],
+        title: ['Work Sans'],
+        body: ['Inter']
+      },
       fontSize: {
         'h1': '56px',
         'h2': '48px',
