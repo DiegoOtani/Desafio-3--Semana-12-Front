@@ -8,7 +8,7 @@ const InputField = ({ onChange, inputName, Icon, placeholder }: InputFieldType) 
         <Icon />
         <input 
           onChange={onChange}
-          className='px-1 focus:outline-none'
+          className='px-1 focus:outline-none w-full'
           type="text" 
           placeholder={placeholder}
         />
