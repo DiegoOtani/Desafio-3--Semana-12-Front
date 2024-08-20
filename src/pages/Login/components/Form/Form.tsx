@@ -6,7 +6,7 @@ import { FaLock, FaFacebook } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FormProps } from './types';
-import { signWithGoogle } from '../../../../services/firebase/firebaseService';
+import { signWithGoogle, signInWithFacebook } from '../../../../services/firebase/firebaseService';
 
 const Form = ({ title, message, handleSubmit,buttonText, changeMessage, handleClick, changeClickMessage }: FormProps) => {
   const handleGoogleLogin = async() => {
@@ -14,7 +14,14 @@ const Form = ({ title, message, handleSubmit,buttonText, changeMessage, handleCl
     return firebaseError || !user 
       ? console.log(firebaseError)
       : console.log(user);
-  }
+  };
+
+  const handleFacebookLogin = async() => {
+    const { user, error: firebaseError } = await signInWithFacebook();
+    return firebaseError || !user
+      ? console.log(firebaseError)
+      : console.log(user);
+  };
 
   return <form className='w-[35%] min-h-[80%] p-10 bg-surface border border-black rounded flex flex-col justify-between'>
     <Titles colorTitle='black' subtitle='Trisog' title={title}/>
@@ -24,7 +31,7 @@ const Form = ({ title, message, handleSubmit,buttonText, changeMessage, handleCl
     <SubmitButton onClick={handleSubmit} text={buttonText}/>
     <div className='flex gap-6'>
       <IconButton Icon={FcGoogle} handleClick={handleGoogleLogin}/>
-      <IconButton Icon={FaFacebook}  handleClick={() => console.log('facebook')}/>
+      <IconButton Icon={FaFacebook}  handleClick={handleFacebookLogin}/>
     </div>
     <p className='flex justify-center gap-4 font-semibold'>{changeMessage}
       <span className='text-brand_2 hover:cursor-pointer hover:text-red-600 font-price font-bold'
