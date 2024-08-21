@@ -36,7 +36,7 @@ const Form = (
       : console.log(user);
   };
 
-  return <form className='w-[35%] min-h-[80%] p-10 bg-surface border border-black rounded flex flex-col justify-between'>
+  return <form className='w-[30%] min-h-[80%] p-10 bg-surface border border-black rounded flex flex-col justify-between'>
     <Titles colorTitle='black' subtitle='Trisog' title={title}/>
     <h2 className='text-center text-h6 font-bold'>{message}</h2>
     <InputField 
