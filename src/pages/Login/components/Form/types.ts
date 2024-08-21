@@ -6,4 +6,8 @@ export type FormProps = {
   changeMessage: string;
   changeClickMessage: string;
   handleClick: () => void;
+  handleChangeEmail: (email: string) => void;
+  handleChangePassword: (password: string) => void;
+  inputEmailValue: string;
+  inputPasswordValue: string;
 }

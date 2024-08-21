@@ -8,7 +8,20 @@ import { FcGoogle } from "react-icons/fc";
 import { FormProps } from './types';
 import { signWithGoogle, signInWithFacebook } from '../../../../services/firebase/firebaseService';
 
-const Form = ({ title, message, handleSubmit,buttonText, changeMessage, handleClick, changeClickMessage }: FormProps) => {
+const Form = (
+  { 
+    title, 
+    message, 
+    handleSubmit,
+    buttonText, 
+    changeMessage, 
+    handleClick, 
+    changeClickMessage, 
+    handleChangeEmail, 
+    handleChangePassword,
+    inputEmailValue,
+    inputPasswordValue    
+  }: FormProps) => {
   const handleGoogleLogin = async() => {
     const { user , error: firebaseError} = await signWithGoogle();
     return firebaseError || !user 
@@ -26,8 +39,20 @@ const Form = ({ title, message, handleSubmit,buttonText, changeMessage, handleCl
   return <form className='w-[35%] min-h-[80%] p-10 bg-surface border border-black rounded flex flex-col justify-between'>
     <Titles colorTitle='black' subtitle='Trisog' title={title}/>
     <h2 className='text-center text-h6 font-bold'>{message}</h2>
-    <InputField Icon={AiOutlineMail} onChange={() => console.log('')} placeholder='Email...'/>
-    <InputField Icon={FaLock} onChange={() => console.log('')} placeholder='Password...'/>
+    <InputField 
+      Icon={AiOutlineMail} 
+      onChange={handleChangeEmail} 
+      placeholder='Email...'
+      value={inputEmailValue}
+      type='text'
+    />
+    <InputField 
+      Icon={FaLock} 
+      onChange={handleChangePassword} 
+      placeholder='Password...'
+      value={inputPasswordValue}
+      type='password'
+    />
     <SubmitButton onClick={handleSubmit} text={buttonText}/>
     <div className='flex gap-6'>
       <IconButton Icon={FcGoogle} handleClick={handleGoogleLogin}/>
