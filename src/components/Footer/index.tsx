@@ -9,7 +9,7 @@ import SubmitButton from '../SubmitButton';
 
 const Footer = () => {
   return <footer className='flex justify-center items-top bg-black text-white w-full pt-20 pb-10'>
-    <section className='flex flex-col pr-20'>
+    <section className='flex flex-col pr-[5%]'>
       <Logo color='white' size='small'/>
       <span className='font-italic italic pt-4'>Need any help?</span>
       <p className='text-h6 font-semibold pb-4'>
@@ -26,7 +26,7 @@ const Footer = () => {
         <a href=""><FaLinkedinIn /></a>
       </div>
     </section>
-    <section className='flex h-2/3 px-20 pb-10 gap-10 border-x'>
+    <section className='flex h-2/3 gap-16 border-x pb-16 px-[5%]'>
       <FastLinks 
         title='Company'
         link1='About Us'
@@ -48,7 +48,7 @@ const Footer = () => {
         link4='Dubai'
       />
     </section>
-    <section className='px-20 flex flex-col gap-2'>
+    <section className=' flex flex-col gap-2 pl-[5%]'>
       <h2 className='font-italic italic'>Sign up Newsletter</h2>
       <InputField 
         Icon={TbLocation} 
