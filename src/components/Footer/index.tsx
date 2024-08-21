@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Logo from '../Logo';
 import { FaTwitter, FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
@@ -8,6 +8,27 @@ import InputField from '../InputField';
 import SubmitButton from '../SubmitButton';
 
 const Footer = () => {
+  const [ email, setEmail ] = useState<string>('');
+  const [ error, setError ] = useState<string>('');
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+    if(timeoutId) clearTimeout(timeoutId);
+    const newTimeout = setTimeout(() => {
+      return e.target.value === '' 
+        ? setError('')
+        : setError(!emailRegex.test(e.target.value) ? 'Invalid Email' : '')
+    }, 1000);
+    setTimeoutId(newTimeout);
+  };
+
+  const handleSubmit = () => {
+    setEmail('');
+    console.log(email);
+  }
+
   return <footer className='flex justify-center items-top bg-black text-white w-full pt-20 pb-10'>
     <section className='flex flex-col pr-[5%]'>
       <Logo color='white' size='small'/>
@@ -54,10 +75,14 @@ const Footer = () => {
         Icon={TbLocation} 
         placeholder='Enter email...' 
         type='text'
-        onChange={() => console.log('input change')}
+        onChange={handleChange}
+        value={email}
       />
+      {error && (
+        <p className='text-brand_2'>{error}</p>
+      )}
       <SubmitButton 
-        onClick={() => console.log('submit')} 
+        onClick={handleSubmit} 
         text='Submit'
         size='small'
       />
