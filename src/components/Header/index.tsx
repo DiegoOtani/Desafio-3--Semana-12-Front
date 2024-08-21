@@ -1,9 +1,9 @@
 import React from 'react'
-import { GiCommercialAirplane } from "react-icons/gi";
 import { BiSearch } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 import { FaPinterestP, FaTwitter, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import Logo from '../Logo';
 
 const Header = () => {
   return <header>
@@ -25,10 +25,7 @@ const Header = () => {
     </div>
     <div className='flex w-full px-10 py-4 justify-between font-title font-normal items-center'>
       <nav className='flex justify-between w-[55%] items-center text-h6 font-medium text-brand_1'>
-        <a className='flex items-center font-title italic font-extrabold text-h4 text-black pr-6'>
-          <GiCommercialAirplane size={24}/>
-          Trisog
-        </a>
+        <Logo />
         <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>Home</a>
         <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>About</a>
         <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>Tours</a>
