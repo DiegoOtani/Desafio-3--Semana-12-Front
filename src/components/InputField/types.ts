@@ -5,6 +5,6 @@ export type InputFieldType = {
   inputName?: string;
   Icon: IconType;
   placeholder: string;
-  value: string;
+  value?: string;
   type: string;
 }
