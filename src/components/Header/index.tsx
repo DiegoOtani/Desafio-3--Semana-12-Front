@@ -13,11 +13,11 @@ const Header = () => {
         <span>info@trisog.com</span>
       </p>
       <nav className='flex items-center justify-between w-36'>
-        <a href=""><FaTwitter size={14}/></a>
-        <a href=""><FaLinkedinIn size={14}/></a>
-        <a href=""><FaGoogle size={14}/></a>
-        <a href=""><FaPinterestP size={14}/></a>
-        <span className='flex items-center'>
+        <a href="https://x.com/home" target='_blank'><FaTwitter size={14}/></a>
+        <a href="https://www.linkedin.com/" target='_blank'><FaLinkedinIn size={14}/></a>
+        <a href="https://www.google.com.br/" target='_blank'><FaGoogle size={14}/></a>
+        <a href="https://br.pinterest.com/" target='_blank'><FaPinterestP size={14}/></a>
+        <span className='flex items-center hover:cursor-pointer'>
           EUR
           <IoIosArrowDown size={14}/>
         </span>
