@@ -6,8 +6,8 @@ export type FormProps = {
   changeMessage: string;
   changeClickMessage: string;
   handleClick: () => void;
-  handleChangeEmail: (email: string) => void;
-  handleChangePassword: (password: string) => void;
+  handleChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputEmailValue: string;
   inputPasswordValue: string;
 }
