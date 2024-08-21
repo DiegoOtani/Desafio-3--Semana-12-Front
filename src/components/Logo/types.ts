@@ -1,4 +1,4 @@
 export type LogoProps = {
   color?: 'black' | 'white';
-  size?: 24 | 12;
+  size?: 'large' | 'small';
 }

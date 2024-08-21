@@ -2,13 +2,17 @@ import React from 'react'
 import { GiCommercialAirplane } from 'react-icons/gi';
 import { LogoProps } from './types';
 
-const Logo = ({ color = 'black', size = 24 }: LogoProps) => {
-  return <a className={`flex items-center font-title italic font-extrabold text-h4 pr-6 
+const Logo = ({ color = 'black', size = 'large' }: LogoProps) => {
+  return <a className={`flex items-center gap-2 font-title italic font-extrabold pr-6 
+    ${size === 'large' 
+      ? 'text-h4'
+      : 'text-h5'
+    }
     ${color === 'black' 
       ? 'text-black'
       : 'text-white'
     }`}>
-    <GiCommercialAirplane size={size} color={color}/>
+    <GiCommercialAirplane size={24} color={color}/>
     Trisog
   </a>
 }
