@@ -59,7 +59,7 @@ const Form = (
       <IconButton Icon={FaFacebook}  handleClick={handleFacebookLogin}/>
     </div>
     <p className='flex justify-center gap-4 font-semibold'>{changeMessage}
-      <span className='text-brand_2 hover:cursor-pointer hover:text-red-600 font-price font-bold'
+      <span className='text-brand_2 hover:cursor-pointer hover:text-red-600 font-italic font-bold'
         onClick={handleClick}
       >
         {changeClickMessage}

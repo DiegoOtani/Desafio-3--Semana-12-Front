@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        price: 'Kaushan',
+        italic: 'Kaushan' ,
         title: 'Work Sans',
         body: 'Inter',
       },
