@@ -1,4 +1,5 @@
 export type CategoriesProps = {
-  title: string;
+  title?: string;
+  subtitle?: string;
   categories: string[];
 }
