@@ -30,7 +30,8 @@ export default {
         secondary: '#051036',
         'secondary-80': 'rgba(5, 16, 54, 0.8)',
         'secondary-40': 'rgba(5, 16, 54, 0.4)',
-        surface: '#F7F8F9'
+        surface: '#F7F8F9',
+        black: '#111111',
       },
     },
   },

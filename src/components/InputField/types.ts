@@ -7,4 +7,5 @@ export type InputFieldType = {
   placeholder: string;
   value?: string;
   type: string;
+  size?: 'large' | 'medium';
 }

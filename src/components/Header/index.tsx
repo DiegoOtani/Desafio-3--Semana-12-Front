@@ -6,7 +6,7 @@ import { IoIosArrowDown } from "react-icons/io";
 import Logo from '../Logo';
 
 const Header = () => {
-  return <header>
+  return <header className='w-full'>
     <div className='flex justify-between px-10 py-1 text-brand_1 bg-gray-100'>
       <p className='flex gap-4 text-body'>
         <span className='border-r border-brand_1 pr-4'>(000)999-898-999</span>

@@ -29,25 +29,25 @@ const Footer = () => {
     console.log(email);
   }
 
-  return <footer className='flex justify-center items-top bg-black text-white w-full pt-20 pb-10'>
-    <section className='flex flex-col pr-[5%]'>
+  return <footer className='flex justify-center items-top bg-black text-white w-full h-auto pt-32 pb-10 px-10'>
+    <section className='flex flex-col pr-[5%] gap-1'>
       <Logo color='white' size='small'/>
-      <span className='font-italic italic pt-4'>Need any help?</span>
-      <p className='text-h6 font-semibold pb-4'>
+      <span className='font-italic italic font-extralight pt-10 text-surface'>Need any help?</span>
+      <p className='text-h6 font-bold pb-4 font-body'>
         Call Us: 
-        <span className='text-brand_2 pl-2'> 
+        <span className='text-brand_2 pl-2 '> 
           (888)1234 5678
         </span>
       </p>
-      <p className='text-gray-300'>Love Street, Muscat, Oman</p>
-      <p className='text-gray-300'>example@trisog.com</p>
+      <p className='text-gray-300 text-h6 font-body'>Love Street, Muscat, Oman</p>
+      <p className='text-gray-300 text-h6 font-body'>exaample@trisog.com</p>
       <div className='flex justify-start gap-4 text-white py-10'>
-        <a href=""><FaFacebookSquare /></a>
-        <a href=""><FaTwitter /></a>
-        <a href=""><FaLinkedinIn /></a>
+        <a href=""><FaFacebookSquare size={20}/></a>
+        <a href=""><FaTwitter size={20}/></a>
+        <a href=""><FaLinkedinIn size={20}/></a>
       </div>
     </section>
-    <section className='flex h-2/3 gap-16 border-x pb-16 px-[5%]'>
+    <section className='flex h-2/3 gap-16 border-x border-gray-600 pb-16 px-[5%]'>
       <FastLinks 
         title='Company'
         link1='About Us'
@@ -65,18 +65,19 @@ const Footer = () => {
       <FastLinks 
         link1='Tokyo'
         link2='Sydney'
-        link3='Melboume'
+        link3='Melbourne'
         link4='Dubai'
       />
     </section>
-    <section className=' flex flex-col gap-2 pl-[5%]'>
-      <h2 className='font-italic italic'>Sign up Newsletter</h2>
+    <section className=' flex flex-col gap-4 pl-[5%]'>
+      <h2 className='font-italic italic font-normal'>Sign up Newsletter</h2>
       <InputField 
         Icon={TbLocation} 
         placeholder='Enter email...' 
         type='text'
         onChange={handleChange}
         value={email}
+        size='medium'
       />
       {error && (
         <p className='text-brand_2'>{error}</p>
@@ -86,7 +87,7 @@ const Footer = () => {
         text='Submit'
         size='small'
       />
-      <p className='pt-10 text-gray-300'>&copy; 2023 Trisog All Right Reserved</p>
+      <p className='pt-10 text-gray-300 text-h6 font-body'>&copy; 2023 Trisog All Right Reserved</p>
     </section>
   </footer>
 } 
