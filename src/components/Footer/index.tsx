@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Logo from '../Logo';
 import { FaTwitter, FaFacebookSquare } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";

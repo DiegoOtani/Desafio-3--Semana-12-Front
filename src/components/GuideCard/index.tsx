@@ -1,4 +1,3 @@
-import React from 'react'
 import { GuideCardProps } from './types';
 
 const GuideCard = ({ imgUrl, alt, date, type, title }: GuideCardProps) => {

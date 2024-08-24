@@ -1,4 +1,3 @@
-import React from 'react'
 import { TitlesProps } from './types';
 
 const Titles = ({ title, subtitle, colorTitle }: TitlesProps) => {

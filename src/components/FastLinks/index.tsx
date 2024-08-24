@@ -1,4 +1,3 @@
-import React from 'react'
 import { FastLinksProps } from './types';
 
 const FastLinks = ({ title, link1, link2, link3, link4 }: FastLinksProps) => {

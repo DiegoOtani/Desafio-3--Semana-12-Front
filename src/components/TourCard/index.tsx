@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Stars from '../Stars';
 import { TourCardProps } from './types';
 import { FaRegClock } from 'react-icons/fa6';

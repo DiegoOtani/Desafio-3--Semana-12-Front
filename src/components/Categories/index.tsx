@@ -1,4 +1,3 @@
-import React from 'react'
 import { CategoriesProps } from './types';
 import Checkbox from '../Checkbox';
 
