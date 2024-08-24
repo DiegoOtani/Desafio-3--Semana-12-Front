@@ -1,4 +1,3 @@
-import React from 'react'
 import { InputFieldType } from './types';
 
 const InputField = ({ onChange, inputName, Icon, placeholder, value, type, size = 'large' }: InputFieldType) => {

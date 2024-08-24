@@ -1,4 +1,3 @@
-import React from 'react'
 import { SubmitButtonProps } from './types';
 
 const SubmitButton = ({ onClick, text, size = 'large' }: SubmitButtonProps) => {

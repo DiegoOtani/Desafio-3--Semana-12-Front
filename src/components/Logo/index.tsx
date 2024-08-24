@@ -1,4 +1,3 @@
-import React from 'react'
 import { GiCommercialAirplane } from 'react-icons/gi';
 import { LogoProps } from './types';
 

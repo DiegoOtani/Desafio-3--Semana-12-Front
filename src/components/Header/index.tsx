@@ -1,4 +1,3 @@
-import React from 'react'
 import { BiSearch } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 import { FaPinterestP, FaTwitter, FaLinkedinIn, FaGoogle } from "react-icons/fa";
