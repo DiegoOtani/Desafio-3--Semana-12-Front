@@ -7,6 +7,14 @@ const Login = () => {
   const [ email, setEmail ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('');
 
+  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
+  }
+
+  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
+  }
+
   const handleLogin = async() => {
     const { user, error: firebaseError } = await loginWithEmailAndPassword(email, password);
     setEmail('');
@@ -35,8 +43,8 @@ const Login = () => {
       changeMessage="Don't have login yet?"
       changeClickMessage="Sign up"
       handleClick={() => setHaveLogin(!haveLogin)}
-      handleChangeEmail={setEmail}
-      handleChangePassword={setPassword}
+      handleChangeEmail={handleChangeEmail}
+      handleChangePassword={handleChangePassword}
       inputEmailValue={email}
       inputPasswordValue={password}
     />
@@ -49,8 +57,8 @@ const Login = () => {
         changeMessage='Already have a login?'
         changeClickMessage='Sign in'
         handleClick={() => setHaveLogin(!haveLogin)}
-        handleChangeEmail={setEmail}
-        handleChangePassword={setPassword}
+        handleChangeEmail={handleChangeEmail}
+        handleChangePassword={handleChangePassword}
         inputEmailValue={email}
         inputPasswordValue={password}
       />

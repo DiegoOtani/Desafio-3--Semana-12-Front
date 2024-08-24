@@ -1,4 +1,3 @@
-import React from 'react'
 import { IconButtonProps } from './types';
 
 const IconButton = ({ Icon, handleClick }: IconButtonProps) => {

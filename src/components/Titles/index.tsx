@@ -1,15 +1,23 @@
-import React from 'react'
 import { TitlesProps } from './types';
 
-const Titles = ({ title, subtitle, colorTitle }: TitlesProps) => {
+const Titles = ({ title, subtitle, colorTitle, size }: TitlesProps) => {
   return (
     <div className='text-center'>
-      <h2 className='text-brand_2 text-h6 font-semibold font-italic italic'>{subtitle}</h2>
+      <h2 className={`text-brand_2 font-normal font-italic italic
+          ${size === 'large'
+            ? 'text-h4'
+            : 'text-h5'
+          }
+        `}>{subtitle}</h2>
       <h1 className={`
         ${colorTitle === 'black'
           ? 'text-black' 
           : 'text-white'} 
-          font-bold text-h4
+          ${size === 'large'
+            ? 'text-large'
+            : 'text-h4'
+          }
+          font-bold text-h4 font-title
         `}>{title}</h1>
     </div>
   )
