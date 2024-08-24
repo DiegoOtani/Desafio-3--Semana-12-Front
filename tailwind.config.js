@@ -12,7 +12,7 @@ export default {
         body: 'Inter',
       },
       fontSize: {
-        'h1': '56px',
+        'large': '56px',
         'h2': '48px',
         'h3': '40px',
         'h4': '32px',
