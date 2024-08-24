@@ -1,5 +1,5 @@
 import TourSlider from "../../components/TourSlider";
-import { Tour } from "../../types/Tour";
+import { Tour } from "../../interfaces/Tour";
 
 const toursData: Tour[] = [
   {

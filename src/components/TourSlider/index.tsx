@@ -3,7 +3,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import TourCard from '../TourCard';
 import '@splidejs/splide/css';
 import '../../styles/slider.css';
-import { Tour } from '../../types/Tour';
+import { Tour } from '../../interfaces/Tour';
 
 interface TourSliderProps {
   tours: Tour[];
