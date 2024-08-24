@@ -29,7 +29,7 @@ const TourCard = ({ imgUrl, locale, title, stars, reviews, days, minPrice }: Tou
       <div className='w-[95%] px-2 flex flex-col justify-center gap-1'>
         <p className='text-gray-500 pt-2'>{locale}</p>
         <h3 className='font-bold text-h6'>{title}</h3>
-        <p className='flex items-center justify-between text-gray-500 py-1'>
+        <div className='flex items-center justify-between text-gray-500 py-1'>
           <span className='flex gap-1'>
             <Stars value={stars} />
             <span>{reviews} reviews</span>
@@ -38,7 +38,7 @@ const TourCard = ({ imgUrl, locale, title, stars, reviews, days, minPrice }: Tou
             <FaRegClock />
             {days} days
           </span>
-        </p>
+        </div>
         <p className='flex justify-between text-gray-500 text-body border-t-2 py-2'>
           Starting from 
           <span className='text-black text-h6 font-italic italic font-semibold'>${minPrice}</span>
