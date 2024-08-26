@@ -41,7 +41,7 @@ const TourCard = ({ imgUrl, locale, title, stars, reviews, days, minPrice }: Tou
         </div>
         <p className='flex justify-between text-gray-500 text-body border-t-2 py-2'>
           Starting from 
-          <span className='text-black text-h6 font-italic italic font-semibold'>${minPrice}</span>
+          <span className='text-black text-h6 font-italic font-semibold'>${minPrice}</span>
         </p>
       </div>
     </a>

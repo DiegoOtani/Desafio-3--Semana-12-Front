@@ -7,7 +7,7 @@ const TypeCard = ({ Icon, type, tours, minValue }: TypeCardProps) => {
     <span className=" text-secondary-80 text-h6 font-normal">{tours} Tours+</span>
     <p className="text-secondary-80 text-h6">
       From 
-      <span className="text-brand_2 text-h5 font-italic italic font-bold pl-2">
+      <span className="text-brand_2 text-h5 font-italic font-bold pl-2">
         ${minValue}
       </span>
     </p>

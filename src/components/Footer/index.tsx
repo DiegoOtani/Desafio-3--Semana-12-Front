@@ -32,7 +32,7 @@ const Footer = () => {
   return <footer className='flex justify-center items-top bg-black text-white w-full h-auto pt-32 pb-10 px-10'>
     <section className='flex flex-col pr-[5%] gap-1'>
       <Logo color='white' size='small'/>
-      <span className='font-italic italic font-extralight pt-10 text-surface'>Need any help?</span>
+      <span className='font-italic font-extralight pt-10 text-surface'>Need any help?</span>
       <p className='text-h6 font-bold pb-4 font-body'>
         Call Us: 
         <span className='text-brand_2 pl-2 '> 
@@ -70,7 +70,7 @@ const Footer = () => {
       />
     </section>
     <section className=' flex flex-col gap-4 pl-[5%]'>
-      <h2 className='font-italic italic font-normal'>Sign up Newsletter</h2>
+      <h2 className='font-italic font-normal'>Sign up Newsletter</h2>
       <InputField 
         Icon={TbLocation} 
         placeholder='Enter email...' 
