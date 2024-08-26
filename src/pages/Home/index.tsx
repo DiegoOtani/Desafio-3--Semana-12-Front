@@ -1,5 +1,6 @@
-import TourSlider from "../../components/TourSlider";
+import Slider from "../../components/Slider";
 import { Tour } from "../../interfaces/Tour";
+import TourCard from "../../components/TourCard";
 
 const toursData: Tour[] = [
   {
@@ -74,13 +75,12 @@ const toursData: Tour[] = [
     days: 5,
     minPrice: 399,
   },
-  // ...adicione mais tours conforme necessário
 ];
 
 const Home = () => {
   return <main className="flex flex-col items-center">
   <section className="flex w-full p-20 ">
-    <TourSlider tours={toursData}/> 
+    <Slider items={toursData} perPage={4} renderItem={TourCard}/> 
   </section>
   </main>
 };

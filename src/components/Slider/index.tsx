@@ -1,31 +1,27 @@
 // @ts-expect-error @splidejs/react-splide
 import { Splide, SplideSlide } from '@splidejs/react-splide';
-import TourCard from '../TourCard';
 import '@splidejs/splide/css';
 import '../../styles/slider.css';
-import { Tour } from '../../interfaces/Tour';
+import { SliderProps } from './types';
 
-interface TourSliderProps {
-  tours: Tour[];
-}
 
-const TourSlider: React.FC<TourSliderProps> = ({ tours }) => {
+const Slider = ({ items, renderItem: ItemComponent, perPage }: SliderProps) => {
   return <>
     <Splide 
       className="pb-6"
       options={{
         arrows: false,
         pagination: true, 
-        perPage: 4
+        perPage
       }} 
       aria-label="Tour Slides">
-        {tours.map((tour, index) =>  (
+        {items.map((item, index) =>  (
           <SplideSlide key={index}> 
-            <TourCard {...tour}/>
+            <ItemComponent {...item}/>
           </SplideSlide>
         ))}
     </Splide>
   </>
 };
 
-export default TourSlider;
+export default Slider;
