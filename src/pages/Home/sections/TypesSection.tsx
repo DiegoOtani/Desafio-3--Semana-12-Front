@@ -13,7 +13,7 @@ const TypesSection = () => {
     minValue: 250,
   };
 
-  return <section className="w-full flex flex-col gap-8 p-20">
+  return <section className="w-[80%] flex flex-col items-center gap-8 py-20 border-t">
     <Titles colorTitle="black" size="medium;" subtitle="Browse By Category" title="Pick A Tour Type"/>
     <Slider renderItem={TypeCard} items={[typeCardProps, typeCardProps, typeCardProps, typeCardProps, typeCardProps, typeCardProps, typeCardProps]} perPage={6} />
   </section>
