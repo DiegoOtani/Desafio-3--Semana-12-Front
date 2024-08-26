@@ -8,7 +8,6 @@ import { SliderProps } from './types';
 const Slider = ({ items, renderItem: ItemComponent, perPage }: SliderProps) => {
   return <>
     <Splide 
-      className="pb-6"
       options={{
         arrows: false,
         pagination: true, 
