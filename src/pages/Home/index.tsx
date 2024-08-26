@@ -5,6 +5,7 @@ import TypesSection from "./sections/TypesSection";
 import Titles from "../../components/Titles";
 import SearchSection from "./sections/SearchSection";
 import InfoSection from "./sections/InfoSection";
+import GuideSections from "./sections/GuideSections";
 
 const toursData: Tour[] = [
   {
@@ -90,6 +91,7 @@ const Home = () => {
   </section>
   <InfoSection />
   <TypesSection />
+  <GuideSections />
   </main>
 };
 
