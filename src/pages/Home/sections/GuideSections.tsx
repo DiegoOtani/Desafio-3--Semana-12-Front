@@ -10,28 +10,28 @@ const GuideSections = () => {
         title="The Impact of Covid-19 on travel & tourism industry" 
         type="Admin" 
         alt="peoples togheter planning" 
-        imgUrl="../../../../public/peoples-planning.png"
+        imgUrl="/peoples-planning.png"
       />
       <GuideCard 
         date="July 13, 2023" 
         title="The Impact of Covid-19 on travel & tourism industry" 
         type="Admin" 
         alt="peoples togheter planning" 
-        imgUrl="../../../../public/peoples-planning.png"
+        imgUrl="/peoples-planning.png"
       />
       <GuideCard 
         date="July 13, 2023" 
         title="The Impact of Covid-19 on travel & tourism industry" 
         type="Admin" 
         alt="peoples togheter planning" 
-        imgUrl="../../../../public/peoples-planning.png"
+        imgUrl="/peoples-planning.png"
       />
       <GuideCard 
         date="July 13, 2023" 
         title="The Impact of Covid-19 on travel & tourism industry" 
         type="Admin" 
         alt="peoples togheter planning" 
-        imgUrl="../../../../public/peoples-planning.png"
+        imgUrl="/peoples-planning.png"
       />
     </div>
   </section>

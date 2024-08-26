@@ -10,8 +10,8 @@ import GuideSections from "./sections/GuideSections";
 const toursData: Tour[] = [
   {
     imgUrl: 'https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg',
-    locale: 'Paris, France',
-    title: 'Paris City Tour',
+    locale: 'Budapest, Hungary',
+    title: 'Wonders of the West Coast & Kimberly',
     stars: 4.5,
     reviews: 120,
     days: 3,
@@ -85,7 +85,7 @@ const toursData: Tour[] = [
 const Home = () => {
   return <main className="flex flex-col items-center">
     <SearchSection />
-  <section className="flex flex-col w-full p-20 ">
+  <section className="flex flex-col w-[90%] jus gap-10 py-32">
     <Titles colorTitle="black" size="medium" subtitle="Tours" title="Most Popular Tours"/>
     <Slider items={toursData} perPage={4} renderItem={TourCard}/> 
   </section>

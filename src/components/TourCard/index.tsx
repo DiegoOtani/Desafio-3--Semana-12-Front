@@ -12,23 +12,24 @@ const TourCard = ({ imgUrl, locale, title, stars, reviews, days, minPrice }: Tou
   };
 
   return (
-    <a 
-      href='#'
-      className='w-80 bg-gray-100 flex flex-col items-center relative'>
+    <div className='w-[90%] bg-gray-100 flex flex-col items-center relative'>
       <button
-        className='absolute bg-white rounded-full p-2 top-4 right-4 hover:text-red-600'
+        className='absolute bg-white rounded-full p-4 top-4 right-4 hover:text-red-600'
         onClick={handleHeartClick}
       >
         {isHeartFilled ? (
-          <FaHeart size={12} color='red' />
+          <FaHeart size={14} color='red' />
         ) : (
-          <FaRegHeart size={12} />
+          <FaRegHeart size={14} />
         )}
       </button>
-      <img src={imgUrl} className='h-50' alt="Tour" />
-      <div className='w-[95%] px-2 flex flex-col justify-center gap-1'>
-        <p className='text-gray-500 pt-2'>{locale}</p>
-        <h3 className='font-bold text-h6'>{title}</h3>
+      <img src={imgUrl} className='h-60 w-full' alt="Tour" />
+      <a 
+        className='w-full p-4 flex flex-col justify-between gap-2 font-bold'
+        href='#'
+        >
+        <p className='text-secondary-40 pt-2 text-h6'>{locale}</p>
+        <h3 className='font-bold font-title text-secondary text-h5'>{title}</h3>
         <div className='flex items-center justify-between text-gray-500 py-1'>
           <span className='flex gap-1'>
             <Stars value={stars} />
@@ -39,12 +40,12 @@ const TourCard = ({ imgUrl, locale, title, stars, reviews, days, minPrice }: Tou
             {days} days
           </span>
         </div>
-        <p className='flex justify-between text-gray-500 text-body border-t-2 py-2'>
+        <p className='flex justify-between text-secondary-80 text-body border-t-2 py-2'>
           Starting from 
           <span className='text-black text-h6 font-italic font-semibold'>${minPrice}</span>
         </p>
-      </div>
-    </a>
+      </a>
+    </div>
   );
 };
 
