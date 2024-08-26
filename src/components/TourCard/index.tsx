@@ -14,7 +14,7 @@ const TourCard = ({ imgUrl, locale, title, stars, reviews, days, minPrice }: Tou
   return (
     <a 
       href='#'
-      className='w-60 bg-gray-100 flex flex-col items-center relative'>
+      className='w-80 bg-gray-100 flex flex-col items-center relative'>
       <button
         className='absolute bg-white rounded-full p-2 top-4 right-4 hover:text-red-600'
         onClick={handleHeartClick}
