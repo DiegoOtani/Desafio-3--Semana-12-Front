@@ -37,7 +37,7 @@ const Form = (
   };
 
   return <form className='w-[30%] min-h-[600px] max-h-[60%] p-10 bg-surface border border-black rounded flex flex-col justify-between'>
-    <Titles colorTitle='black' subtitle='Trisog' title={title} size='medium;'/>
+    <Titles colorTitle='black' subtitle='Trisog' title={title} size='medium'/>
     <h2 className='text-center text-h6 font-bold'>{message}</h2>
     <InputField 
       Icon={AiOutlineMail} 

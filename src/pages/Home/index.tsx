@@ -85,7 +85,7 @@ const Home = () => {
   return <main className="flex flex-col items-center">
     <SearchSection />
   <section className="flex flex-col w-full p-20 ">
-    <Titles colorTitle="black" size="medium;" subtitle="Tours" title="Most Popular Tours"/>
+    <Titles colorTitle="black" size="medium" subtitle="Tours" title="Most Popular Tours"/>
     <Slider items={toursData} perPage={4} renderItem={TourCard}/> 
   </section>
   <InfoSection />
