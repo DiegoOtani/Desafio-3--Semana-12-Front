@@ -4,6 +4,7 @@ import TourCard from "../../components/TourCard";
 import TypesSection from "./sections/TypesSection";
 import Titles from "../../components/Titles";
 import SearchSection from "./sections/SearchSection";
+import InfoSection from "./sections/InfoSection";
 
 const toursData: Tour[] = [
   {
@@ -84,9 +85,10 @@ const Home = () => {
   return <main className="flex flex-col items-center">
     <SearchSection />
   <section className="flex flex-col w-full p-20 ">
-    <Titles colorTitle="black" size="large" subtitle="Tours" title="Most Popular Tours"/>
+    <Titles colorTitle="black" size="medium;" subtitle="Tours" title="Most Popular Tours"/>
     <Slider items={toursData} perPage={4} renderItem={TourCard}/> 
   </section>
+  <InfoSection />
   <TypesSection />
   </main>
 };
