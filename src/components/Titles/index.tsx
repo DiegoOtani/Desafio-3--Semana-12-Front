@@ -3,7 +3,7 @@ import { TitlesProps } from './types';
 const Titles = ({ title, subtitle, colorTitle, size }: TitlesProps) => {
   return (
     <div className='text-center'>
-      <h2 className={`text-brand_2 font-bold font-italic
+      <h2 className={`text-brand_2 font-normal font-italic
           ${size === 'large'
             ? 'text-h4'
             : 'text-h5'
@@ -15,7 +15,7 @@ const Titles = ({ title, subtitle, colorTitle, size }: TitlesProps) => {
           : 'text-white'} 
           ${size === 'large'
             ? 'text-large'
-            : 'text-h3'
+            : 'text-h2'
           }
           font-bold font-title
         `}>{title}</h1>
