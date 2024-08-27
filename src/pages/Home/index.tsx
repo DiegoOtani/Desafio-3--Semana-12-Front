@@ -83,7 +83,7 @@ const toursData: Tour[] = [
 ];
 
 const Home = () => {
-  return <main className="flex flex-col items-center">
+  return <main className="flex flex-col items-center gap-32">
     <SearchSection />
     <ToursSection toursData={toursData}/>
     <InfoSection />

@@ -2,7 +2,7 @@ import GuideCard from "../../../components/GuideCard";
 import Titles from "../../../components/Titles"
 
 const GuideSections = () => {
-  return <section className="w-full flex flex-col items-center gap-10 p-32">
+  return <section className="w-full flex flex-col items-center gap-10 px-32 pb-32">
     <Titles colorTitle="black" size="medium" subtitle="Updates" title="Latest Travel Guide" />
     <div className="grid grid-cols-2 gap-10">
       <GuideCard 
