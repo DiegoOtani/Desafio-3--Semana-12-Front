@@ -88,7 +88,7 @@ const toursData: Tour[] = [
 
 const Home = () => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
-  
+
   useEffect(() => {
     const loadTypes = async() => {
       try {
@@ -99,7 +99,6 @@ const Home = () => {
         console.log(error);
       }
     };
-
     loadTypes();
   }, []);
 
@@ -108,7 +107,7 @@ const Home = () => {
   }, [types]);
 
   return <main className="w-full flex flex-col items-center gap-32">
-    <SearchSection />
+    <SearchSection options={types.map(type => type.type_name)} />
     <ToursSection toursData={toursData}/>
     <InfoSection />
     <DestinationsSection />
