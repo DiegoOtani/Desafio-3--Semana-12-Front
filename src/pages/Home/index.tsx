@@ -7,6 +7,9 @@ import TestimonialsSection from "./sections/TestimonialsSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import ToursSection from "./sections/ToursSection";
 import DestinationsSection from "./sections/DestinationsSection";
+import { useState, useEffect } from "react";
+import { TypesReceived } from "../../interfaces/Types";
+import TypesService from "../../services/api/typesService";
 
 const toursData: Tour[] = [
   {
@@ -84,6 +87,26 @@ const toursData: Tour[] = [
 ];
 
 const Home = () => {
+  const [types, setTypes] = useState<TypesReceived[]>([]);
+  
+  useEffect(() => {
+    const loadTypes = async() => {
+      try {
+        const data = await TypesService.getTypes();
+        setTypes(data);
+        console.log(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    loadTypes();
+  }, []);
+
+  useEffect(() => {
+    console.log(types);
+  }, [types]);
+
   return <main className="w-full flex flex-col items-center gap-32">
     <SearchSection />
     <ToursSection toursData={toursData}/>
