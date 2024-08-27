@@ -1,6 +1,6 @@
-import Slider from "../../../../components/Slider"
-import { TestimonialProps } from "../../components/Testimonials/types"
-import Testimonials from "../../components/Testimonials"
+import Slider from "../../../components/Slider"
+import { TestimonialProps } from "../components/Testimonials/types"
+import Testimonials from "../components/Testimonials"
 
 const TestimonialsData: TestimonialProps[] = [
   {
