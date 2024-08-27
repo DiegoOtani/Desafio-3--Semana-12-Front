@@ -6,6 +6,7 @@ import GuideSections from "./sections/GuideSections";
 import TestimonialsSection from "./sections/TestimonialsSection";
 import ExperienceSection from "./sections/ExperienceSection";
 import ToursSection from "./sections/ToursSection";
+import DestinationsSection from "./sections/DestinationsSection";
 
 const toursData: Tour[] = [
   {
@@ -83,10 +84,11 @@ const toursData: Tour[] = [
 ];
 
 const Home = () => {
-  return <main className="flex flex-col items-center gap-32">
+  return <main className="w-full flex flex-col items-center gap-32">
     <SearchSection />
     <ToursSection toursData={toursData}/>
     <InfoSection />
+    <DestinationsSection />
     <ExperienceSection />
     <TypesSection />
     <TestimonialsSection />
