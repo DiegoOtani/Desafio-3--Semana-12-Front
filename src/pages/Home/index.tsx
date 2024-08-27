@@ -7,6 +7,7 @@ import SearchSection from "./sections/SearchSection";
 import InfoSection from "./sections/InfoSection";
 import GuideSections from "./sections/GuideSections";
 import TestimonialsSection from "./sections/TestimonialsSection";
+import ExperienceSection from "./sections/ExperienceSection";
 
 const toursData: Tour[] = [
   {
@@ -91,6 +92,7 @@ const Home = () => {
     <Slider items={toursData} perPage={4} renderItem={TourCard}/> 
   </section>
   <InfoSection />
+  <ExperienceSection />
   <TypesSection />
   <TestimonialsSection />
   <GuideSections />
