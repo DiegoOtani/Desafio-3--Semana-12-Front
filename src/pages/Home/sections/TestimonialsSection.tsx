@@ -25,17 +25,17 @@ const TestimonialSection = () => {
     <div className="w-[70%] flex flex-col items-center">
       <img 
         className="rotate-[10deg] h-[150px] w-auto z-20 border-4 border-white"
-        src="/public/close-up-couple-traveling.jpg" 
+        src="/close-up-couple-traveling.jpg" 
         alt="" 
       />
       <img 
         className="rotate-[-10deg] h-[250px] w-auto z-10 border-4 border-white"
-        src="/public/close-up-couple-traveling.jpg" 
+        src="/close-up-couple-traveling.jpg" 
         alt="" 
       />
       <img 
         className="rotate-[10deg] h-[150px] w-auto z-20 border-4 border-white"
-        src="/public/close-up-couple-traveling.jpg" 
+        src="/close-up-couple-traveling.jpg" 
         alt="" 
       />
     </div>

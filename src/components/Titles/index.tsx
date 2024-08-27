@@ -2,10 +2,10 @@ import { TitlesProps } from './types';
 
 const Titles = ({ title, subtitle, colorTitle, size, place = 'center' }: TitlesProps) => {
   return (
-    <div className={place === `center`
+    <div className={`z-10 ${place === `center`
         ? 'text-center'
-        : 'text-start'
-      }>
+        : 'text-start'}
+      `}>
       <h2 className={`text-brand_2 font-normal font-italic
           ${size === 'large'
             ? 'text-h4'
