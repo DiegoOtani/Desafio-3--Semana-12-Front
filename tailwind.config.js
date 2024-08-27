@@ -7,11 +7,12 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        italic: 'Kaushan' ,
+        italic: 'Kaushan Script' ,
         title: 'Work Sans',
         body: 'Inter',
       },
       fontSize: {
+        'big': '80px',
         'large': '56px',
         'h2': '48px',
         'h3': '40px',
@@ -31,6 +32,7 @@ export default {
         'secondary-80': 'rgba(5, 16, 54, 0.8)',
         'secondary-40': 'rgba(5, 16, 54, 0.4)',
         surface: '#F7F8F9',
+        bodyColor: '#676D85',
         black: '#111111',
       },
     },

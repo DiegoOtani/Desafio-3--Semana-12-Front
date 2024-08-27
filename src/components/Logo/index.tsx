@@ -2,7 +2,7 @@ import { GiCommercialAirplane } from 'react-icons/gi';
 import { LogoProps } from './types';
 
 const Logo = ({ color = 'black', size = 'large' }: LogoProps) => {
-  return <a className={`flex items-center gap-2 font-title italic pr-6 
+  return <a className={`flex items-center gap-2 font-title pr-6 
     ${size === 'large' 
       ? 'text-h4 font-extrabold '
       : 'text-h5 font-bold '

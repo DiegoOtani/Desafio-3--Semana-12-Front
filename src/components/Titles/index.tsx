@@ -1,23 +1,26 @@
 import { TitlesProps } from './types';
 
-const Titles = ({ title, subtitle, colorTitle, size }: TitlesProps) => {
+const Titles = ({ title, subtitle, colorTitle, size, place = 'center' }: TitlesProps) => {
   return (
-    <div className='text-center'>
-      <h2 className={`text-brand_2 font-normal font-italic italic
+    <div className={`z-10 ${place === `center`
+        ? 'text-center'
+        : 'text-start'}
+      `}>
+      <h2 className={`text-brand_2 font-normal font-italic
           ${size === 'large'
             ? 'text-h4'
             : 'text-h5'
           }
         `}>{subtitle}</h2>
-      <h1 className={`
+      <h1 className={` leading-tight
         ${colorTitle === 'black'
-          ? 'text-black' 
+          ? 'text-secondary' 
           : 'text-white'} 
           ${size === 'large'
             ? 'text-large'
-            : 'text-h4'
+            : 'text-h2'
           }
-          font-bold text-h4 font-title
+          font-bold font-title
         `}>{title}</h1>
     </div>
   )
