@@ -6,6 +6,7 @@ import Titles from "../../components/Titles";
 import SearchSection from "./sections/SearchSection";
 import InfoSection from "./sections/InfoSection";
 import GuideSections from "./sections/GuideSections";
+import TestimonialsSection from "./sections/TestimonialsSection";
 
 const toursData: Tour[] = [
   {
@@ -91,6 +92,7 @@ const Home = () => {
   </section>
   <InfoSection />
   <TypesSection />
+  <TestimonialsSection />
   <GuideSections />
   </main>
 };
