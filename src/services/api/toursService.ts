@@ -1,12 +1,12 @@
 import axios from "axios";
 import { api } from "./api";
-import { TypesReceived } from "../../interfaces/Types";
+import { TourReturned } from "../../interfaces/Tour";
 
-class TypesService {
-  static async getTypes(): Promise<TypesReceived[]> {
+class TourService {
+  static async getTours() {
     try {
-      const response = await api.get<{types: TypesReceived[]}>('/type');
-      return response.data.types;
+      const response = await api.get<{tours: TourReturned[]}>('/tour');
+      return response.data.tours;
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error('Error fetching types:', error.message);
@@ -15,7 +15,7 @@ class TypesService {
       }
       throw error;
     }
-  }
+  };
 };
 
-export default TypesService;
+export default TourService;
