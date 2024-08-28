@@ -9,8 +9,8 @@ export interface Tour {
 };
 
 export interface TourReturned {
-  id: string;
-  name: string;
+  tour_id: string;
+  tour_name: string;
   city: string;
   country_name: string; 
   initial_date: string;

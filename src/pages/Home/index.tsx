@@ -21,7 +21,6 @@ const Home = () => {
       try {
         const data = await TypesService.getTypes();
         setTypes(data);
-        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -40,10 +39,6 @@ const Home = () => {
     };
     loadTours();
   }, []);
-
-  useEffect(() => {
-    console.log(tours);
-  }, [tours])
 
   return <main className="w-full flex flex-col items-center gap-32">
     <SearchSection options={types.map(type => type.type_name)} />
