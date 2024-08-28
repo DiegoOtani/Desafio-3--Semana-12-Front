@@ -5,6 +5,7 @@ import { TourReturned } from "../../interfaces/Tour";
 import TourService from "../../services/api/toursService";
 import TourCard from "../../components/TourCard";
 import Pagination from "./Components/Pagination";
+import { FaArrowDownLong } from "react-icons/fa6";
 
 const Tour = () => {
   const [tours, setTours] = useState<TourReturned[]>([]);
@@ -16,7 +17,6 @@ const Tour = () => {
   useEffect(() => {
     const loadTours = async () => {
       try {
-        console.log(currentPage)
         const data = await TourService.getToursByPage(currentPage, limit);
         setTours(data.tours);
         setTotalPages(data.totalPages);
@@ -38,6 +38,18 @@ const Tour = () => {
       <main className="bg-white flex gap-6 p-32">
         <Filters />
         <section className="min-w-[75%] flex flex-col ">
+          <div className="w-full flex justify-between text-secondary-40 p-6 text-h6 font-body">
+            <span>{totalTours} Tours</span>
+            <div className="flex items-center">
+              <span>Sort by</span>
+              <FaArrowDownLong color="051036"/>
+              <select id="sort-by" className="border focus:outline-none rounded p-1 pr-32">
+                <option value="Title" selected>
+                  Title
+                </option>
+              </select>
+            </div>
+          </div>
           <div className="grid grid-cols-3 min-w-[75%]">
             {tours.map(tour => (
               <TourCard 

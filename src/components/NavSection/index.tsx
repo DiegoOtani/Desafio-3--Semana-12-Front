@@ -1,7 +1,27 @@
 import { Link } from "react-router-dom";
 import SearchBar from "../SearchBar";
 import { NavSectionProps } from "./types";
+import { useState, useEffect } from "react";
+import TypesService from "../../services/api/typesService";
+import { TypesReceived } from "../../interfaces/Types";
+
+
 const NavSection = ({ previousPages, actualPage }: NavSectionProps) => {
+
+  const [types, setTypes] = useState<TypesReceived[]>([]);
+
+  useEffect(() => {
+    const loadTypes = async() => {
+      try {
+        const data = await TypesService.getTypes();
+        setTypes(data);
+      } catch (error) {
+        console.log(error);
+      };
+    }
+    loadTypes();
+  });
+
   return <section className={`
       relative w-full flex flex-col items-center justify-center min-h-40 
       bg-[url('/background-baloon.jpg')] bg-cover bg-center h-screen max-h-[350px]
@@ -25,7 +45,7 @@ const NavSection = ({ previousPages, actualPage }: NavSectionProps) => {
         {actualPage}
       </span>
     </nav>
-    <SearchBar options={[]}/>
+    <SearchBar options={types.map(type => type.type_name)}/>
   </section>
 };
 
