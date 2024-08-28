@@ -13,7 +13,6 @@ const Tour = () => {
       try {
         const data = await TourService.getTours();
         setTours(data);
-        console.log(data)
       } catch (error) {
         console.log(error);
       }
@@ -24,9 +23,9 @@ const Tour = () => {
   return (
     <>
       <NavSection previousPages={[{ name: 'Home', to: '/' }]} actualPage="Tour Package" />
-      <main className="bg-white flex gap-10 p-32">
+      <main className="bg-white flex gap-6 p-32">
         <Filters />
-        <section className="grid grid-cols-3 min-w-[70%]">
+        <section className="grid grid-cols-3 min-w-[75%]">
           {tours.map(tour => (
             <TourCard 
               key={tour.tour_id} 
