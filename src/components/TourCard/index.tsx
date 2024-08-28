@@ -14,7 +14,7 @@ const TourCard = ({ tour_id, ulrImg, tour_name, average_review, review_count, du
   return (
     <div key={tour_id} className='w-full bg-white flex flex-col items-center justify-center relative px-6 pb-6'>
       <button
-        className='absolute bg-white rounded-full p-4 top-4 right-4 hover:text-red-600'
+        className='absolute bg-white rounded-full p-4 top-4 right-10 hover:text-red-600'
         onClick={handleHeartClick}
       >
         {isHeartFilled ? (
