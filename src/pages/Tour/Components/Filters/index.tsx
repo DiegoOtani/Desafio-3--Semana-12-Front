@@ -18,7 +18,6 @@ const Filters = () => {
       try {
         const data = await TypesService.getTypes();
         setTypes(data);
-        console.log(data);
       } catch (error) {
         console.log(error);
       }
