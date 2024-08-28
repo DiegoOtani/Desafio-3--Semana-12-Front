@@ -2,16 +2,32 @@ import Categories from "../../../../components/Categories";
 import { useState, useEffect } from "react";
 import { TypesReceived } from "../../../../interfaces/Types";
 import TypesService from "../../../../services/api/typesService";
+import CountryService from "../../../../services/api/countriesService";
 import { FiSearch } from "react-icons/fi";
 import SubmitButton from "../../../../components/SubmitButton";
+import { CountryByContReturned, CountryByContinent } from "../../../../interfaces/Country";
 
 const Filters = () => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
   const [price, setPrice] = useState<number>(0);
+  const [countriesByCont, setCountriesByCont] = useState<CountryByContinent[]>([]);
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrice(Number(e.target.value));
   }
+
+  useEffect(() => {
+    const loadCount = async() => {
+      try {
+        const data: CountryByContReturned = await CountryService.getCountriesByCont();
+        setCountriesByCont(data.countries);
+        console.log(data.countries);
+      } catch (error) {
+        console.error(error);
+      };
+    };
+    loadCount();
+  }, []);
 
   useEffect(() => {
     const loadTypes = async() => {
@@ -63,6 +79,13 @@ const Filters = () => {
       <SubmitButton onClick={() => console.log('submit')} text="Submit" size="small"/>
     </div>
     <Categories title="Categories" categories={types.map(type => type.type_name)}/>
+      {countriesByCont.map((continentData) => (
+        <Categories 
+          key={continentData.continent} 
+          subtitle={continentData.continent} 
+          categories={continentData.countries.map(country => country.name)}
+        />
+      ))}
     <Categories title="Reviews" categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '3 Stars & Up', '1 Stars & Up',]}/>
   </aside>
 };
