@@ -1,4 +1,4 @@
-import { Tour, TourReturned } from "../../interfaces/Tour";
+import { TourReturned } from "../../interfaces/Tour";
 import TypesSection from "./sections/TypesSection";
 import SearchSection from "./sections/SearchSection";
 import InfoSection from "./sections/InfoSection";
@@ -11,81 +11,6 @@ import { useState, useEffect } from "react";
 import { TypesReceived } from "../../interfaces/Types";
 import TypesService from "../../services/api/typesService";
 import TourService from "../../services/api/toursService";
-
-const toursData: Tour[] = [
-  {
-    imgUrl: 'https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg',
-    locale: 'Budapest, Hungary',
-    title: 'Wonders of the West Coast & Kimberly',
-    stars: 4.5,
-    reviews: 120,
-    days: 3,
-    minPrice: 299,
-  },
-  {
-    imgUrl: 'https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg',
-    locale: 'Rome, Italy',
-    title: 'Rome Historical Tour',
-    stars: 4.8,
-    reviews: 210,
-    days: 5,
-    minPrice: 399,
-  },
-  {
-    imgUrl: 'https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg',
-    locale: 'Paris, France',
-    title: 'Paris City Tour',
-    stars: 4.5,
-    reviews: 120,
-    days: 3,
-    minPrice: 299,
-  },
-  {
-    imgUrl: 'https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg',
-    locale: 'Rome, Italy',
-    title: 'Rome Historical Tour',
-    stars: 4.8,
-    reviews: 210,
-    days: 5,
-    minPrice: 399,
-  },
-  {
-    imgUrl: 'https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg',
-    locale: 'Paris, France',
-    title: 'Paris City Tour',
-    stars: 4.5,
-    reviews: 120,
-    days: 3,
-    minPrice: 299,
-  },
-  {
-    imgUrl: 'https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg',
-    locale: 'Rome, Italy',
-    title: 'Rome Historical Tour',
-    stars: 4.8,
-    reviews: 210,
-    days: 5,
-    minPrice: 399,
-  },
-  {
-    imgUrl: 'https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg',
-    locale: 'Paris, France',
-    title: 'Paris City Tour',
-    stars: 4.5,
-    reviews: 120,
-    days: 3,
-    minPrice: 299,
-  },
-  {
-    imgUrl: 'https://services.meteored.com/img/article/inteligencia-artificial-aprende-a-reconstruir-imagens-vistas-por-pessoas-ciencia-fotos-1679175318563_1280.jpg',
-    locale: 'Rome, Italy',
-    title: 'Rome Historical Tour',
-    stars: 4.8,
-    reviews: 210,
-    days: 5,
-    minPrice: 399,
-  },
-];
 
 const Home = () => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
@@ -122,7 +47,7 @@ const Home = () => {
 
   return <main className="w-full flex flex-col items-center gap-32">
     <SearchSection options={types.map(type => type.type_name)} />
-    <ToursSection toursData={toursData}/>
+    <ToursSection toursData={tours}/>
     <InfoSection />
     <DestinationsSection />
     <ExperienceSection />
