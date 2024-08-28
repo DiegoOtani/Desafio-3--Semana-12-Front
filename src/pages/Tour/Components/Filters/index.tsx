@@ -5,7 +5,7 @@ import TypesService from "../../../../services/api/typesService";
 import CountryService from "../../../../services/api/countriesService";
 import { FiSearch } from "react-icons/fi";
 import SubmitButton from "../../../../components/SubmitButton";
-import { CountryByContReturned, CountryByContinent } from "../../../../interfaces/Country";
+import { CountryByContinent } from "../../../../interfaces/Country";
 
 const Filters = () => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
@@ -14,14 +14,14 @@ const Filters = () => {
 
   const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPrice(Number(e.target.value));
-  }
+  };
 
   useEffect(() => {
     const loadCount = async() => {
       try {
-        const data: CountryByContReturned = await CountryService.getCountriesByCont();
-        setCountriesByCont(data.countries);
-        console.log(data.countries);
+        const data = await CountryService.getCountriesByCont();
+        setCountriesByCont(data);
+        console.log(data);
       } catch (error) {
         console.error(error);
       };

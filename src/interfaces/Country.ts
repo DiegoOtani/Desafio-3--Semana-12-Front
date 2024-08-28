@@ -8,7 +8,3 @@ export interface CountryByContinent {
   continent: string;
   countries: Country[];
 };
-
-export interface CountryByContReturned {
-  countries: CountryByContinent[]
-};
