@@ -12,7 +12,7 @@ const SearchBar = ({ options }: SearchBarProps) => {
       <label htmlFor="options" className="text-secondary font-italic font-medium text-h6">Type</label>
       <div className="flex items-center bg-white border rounded-lg px-3 py-2 text-h6 text-secondary-40">
       <FaRegFlag color="gray" size={16}/>
-        <select id="options" className="w-full">
+        <select id="options" className="w-full focus:outline-none pl-1">
           <option value="" disabled selected hidden>Activity</option>
           {options.map(option => (
             <option value={option}>{option}</option>
