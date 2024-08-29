@@ -5,12 +5,12 @@ import { TicketOptionProps } from "./types";
 
 const TicketOption = ({ description, value }: TicketOptionProps) => {
   return <div className="flex items-center justify-between">
-    <label className="text-bodyColor font-normal font-body text-h6">
+    <label className="text-bodyColor font-normal font-body text-subtitle">
       {description}
     </label>
     <div className="flex gap-2">
       <TicketButton Icon={FaMinus} handleClick={() => console.log('minus')}/>
-      <label className="flex items-center justify-center border rounded-lg w-10 h-10 text-bodyColor font-bold text-h6">
+      <label className="flex items-center justify-center border rounded-lg w-10 h-10 text-bodyColor font-bold text-subtitle">
         {value}
       </label>
       <TicketButton Icon={FaPlus} handleClick={() => console.log('plus')}/>
