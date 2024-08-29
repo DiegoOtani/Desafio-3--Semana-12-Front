@@ -1,10 +1,10 @@
 import NavSection from "../../components/NavSection";
-import Filters from "./Components/Filters";
+import Filters from "./components/Filters";
 import { useState, useEffect } from "react";
 import { TourReturned } from "../../interfaces/Tour";
 import TourService from "../../services/api/toursService";
 import TourCard from "../../components/TourCard";
-import Pagination from "./Components/Pagination";
+import Pagination from "./components/Pagination";
 import { FaArrowDownLong } from "react-icons/fa6";
 
 const Tour = () => {
