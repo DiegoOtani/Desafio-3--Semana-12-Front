@@ -6,7 +6,7 @@ import { FaRegFlag } from "react-icons/fa";
 import { SearchBarProps } from "./types";
 
 const SearchBar = ({ options }: SearchBarProps) => {
-  return <div className="flex justify-between items-end gap-4 w-[80%] bg-surface p-8 rounded-3xl z-10 absolute bottom-[-70px] shadow-xl">
+  return <div className="flex justify-between items-end gap-4 w-[80%] bg-white p-8 rounded-3xl z-10 absolute bottom-[-70px] shadow-lg">
     <InputField Icon={TbLocation} onChange={(e) => console.log(e)} placeholder="Where to go?" type="text" inputName="Destination" size="large" value=""/>
     <div className="w-full">
       <label htmlFor="options" className="text-secondary font-italic font-medium text-h6">Type</label>
