@@ -32,6 +32,12 @@ const AsidePurchase = ({ min_price }: AsidePurchasePros) => {
     if (type === 'childrens' && childrens > 0) setChildrens(prev => prev - 1);
   };
 
+  const handleSubmit = () => {
+    setAdults(0);
+    setKids(0)
+    setChildrens(0);
+  };
+
   return (
     <aside className="w-full bg-surface flex flex-col gap-6 p-10 max-w-[400px]">
       <h3 className="border-b text-h5 font-extrabold font-body">
@@ -63,7 +69,7 @@ const AsidePurchase = ({ min_price }: AsidePurchasePros) => {
         <span>Total</span>
         <span className="font-extrabold text-brand_2 text-h5">${totalPrice}</span>
       </div>
-      <SubmitButton text="Book now" onClick={() => console.log('submit')} size="large"/>
+      <SubmitButton text="Book now" onClick={handleSubmit} size="large"/>
     </aside>
   );
 };
