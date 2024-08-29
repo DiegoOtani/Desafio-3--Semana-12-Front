@@ -79,6 +79,8 @@ const Filters = () => {
       <SubmitButton onClick={() => console.log('submit')} text="Submit" size="small"/>
     </div>
     <Categories title="Categories" categories={types.map(type => type.type_name)}/>
+    <div className="bg-surface flex flex-col text-h6 font-body">
+      <h3 className="font-extrabold pt-6 px-10">Destinations</h3>
       {countriesByCont.map((continentData) => (
         <Categories 
           key={continentData.continent} 
@@ -86,6 +88,7 @@ const Filters = () => {
           categories={continentData.countries.map(country => country.name)}
         />
       ))}
+    </div>
     <Categories title="Reviews" categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '3 Stars & Up', '1 Stars & Up',]}/>
   </aside>
 };
