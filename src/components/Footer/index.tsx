@@ -42,9 +42,9 @@ const Footer = () => {
       <p className='text-gray-300 text-h6 font-body'>Love Street, Muscat, Oman</p>
       <p className='text-gray-300 text-h6 font-body'>exaample@trisog.com</p>
       <div className='flex justify-start gap-4 text-white py-10'>
-        <a href=""><FaFacebookSquare size={20}/></a>
-        <a href=""><FaTwitter size={20}/></a>
-        <a href=""><FaLinkedinIn size={20}/></a>
+        <a href="https://www.facebook.com/" target='_blank'><FaFacebookSquare size={20}/></a>
+        <a href="https://x.com/home" target='_blank'><FaTwitter size={20}/></a>
+        <a href="https://www.linkedin.com/" target='_blank'><FaLinkedinIn size={20}/></a>
       </div>
     </section>
     <section className='flex h-2/3 gap-16 border-x border-gray-600 pb-16 px-[5%]'>

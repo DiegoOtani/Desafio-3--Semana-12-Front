@@ -3,7 +3,7 @@ import Included from "../components/Included";
 import { FiPlayCircle } from "react-icons/fi";
 
 const ExperienceSection = () => {
-  return <section className="w-[80%] flex justify-start">
+  return <section className="w-full flex min-h-[400px] justify-center py-20">
     <div className="flex w-[50%] items-end relative">
       <img className="border-4 border-white w-[50%] h-[70%] rotate-[-15deg] z-10 absolute top-5 left-0"
         src="/images.jpg" alt="" 
