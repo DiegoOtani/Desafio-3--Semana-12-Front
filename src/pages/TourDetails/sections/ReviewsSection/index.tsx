@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 const ReviewSection = () => {
   const { id } = useParams();
 
-  const [reviewAvg, setReviewAvg] = useState<ReviewReturned | null>(null);
+  const [reviewAvg, setReviewAvg] = useState<ReviewReturned | undefined | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
