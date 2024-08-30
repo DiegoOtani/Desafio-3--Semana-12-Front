@@ -43,7 +43,7 @@ const AddReviewSection = () => {
         type="text" 
         placeholder="Write your comment"
       />
-      <SubmitButton size="small" onClick={() => console.log(rating.prices)} text="Submit review"/>
+      <SubmitButton size="very small" onClick={() => console.log(rating.prices)} text="Submit review"/>
     </form>
   </section>
 };
