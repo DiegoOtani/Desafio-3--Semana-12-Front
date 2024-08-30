@@ -34,7 +34,23 @@ class TourService {
       }
       throw error;
     }
-  }
+  };
+
+  static async getTourById(id: string | undefined) {
+    if(id === undefined) return;
+    try {
+      const response = await api.get(`/tour/${id}`);
+      console.log(response.data.tour)
+      return response.data.tour;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        console.error('Error fetching types:', error.message);
+      } else {
+        console.error('Unexpected error:', error);
+      }
+      throw error;
+    }
+  };
 };
 
 export default TourService;
