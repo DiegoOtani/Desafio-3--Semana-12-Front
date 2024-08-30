@@ -4,6 +4,7 @@ import InfoSection from "./sections/InfoSection";
 import OverviewSection from "./sections/OverviewSection";
 import MapSection from "./sections/MapSection";
 import ReviewSection from "./sections/ReviewsSection";
+import ReviewComment from "./components/ReviewComment";
 
 const TourDetails = () => {
   return <main className="w-full flex justify-center gap-6 px-32 py-10">
@@ -15,6 +16,14 @@ const TourDetails = () => {
       <MapSection coordinates={[-22.9068, -43.1729]} city="Rio de Janeiro" country="Brasil"/>
       <h1 className="text-h5 font-extrabold text-secondary font-title">Average Reviews</h1>
       <ReviewSection />
+      <ReviewComment 
+        key={'Simon Simmons Review'}
+        review="asdsaddas" 
+        date="March 20, 2022" 
+        name="Sindy Simmons"
+        average_review={4.8} 
+        count_review={15} 
+      />
     </div>
     <AsidePurchase min_price="104"/> 
   </main>
