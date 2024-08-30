@@ -11,6 +11,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import TourService from "../../services/api/toursService";
 import { useState, useEffect } from "react";
 import { TourReturned } from "../../interfaces/Tour";
+import ReviewService from "../../services/api/reviewService";
+import { ReviewUserReturnded } from "../../interfaces/review";
 
 const TourDetails = () => {
   const { id } = useParams();
@@ -19,6 +21,7 @@ const TourDetails = () => {
   const [tour, setTour] = useState<TourReturned | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [reviews, setReviews] = useState<ReviewUserReturnded[]>([]);
 
   useEffect(() => {
     const loadTour = async () => {
@@ -41,6 +44,19 @@ const TourDetails = () => {
 
     loadTour();
   }, [id, navigate]);
+
+  useEffect(() => {
+    const loadReviews = async() => {
+      try {
+        const data = await ReviewService.getReviewsById(id);
+        console.log(data);
+        if(data) setReviews(data);
+      } catch (error) {
+        console.error(error);
+      };
+    };
+    loadReviews();
+  }, [id]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -79,15 +95,17 @@ const TourDetails = () => {
         <MapSection coordinates={coordinates} city="Rio de Janeiro" country="Brasil" />
         <h1 className="text-h5 font-extrabold text-secondary font-title">Average Reviews</h1>
         <ReviewSection />
-        <h1 className="text-h5 font-extrabold text-secondary font-title">Showing 1 review</h1>
-        <ReviewComment 
-          key={'Simon Simmons Review'}
-          review="asdsaddas" 
-          date="March 20, 2022" 
-          name="Sindy Simmons"
-          average_review={4.8} 
-          count_review={15} 
-        />
+        <h1 className="text-h5 font-extrabold text-secondary font-title">Showing {reviews.length} review</h1>
+        {reviews.map((review, index) => (
+          <ReviewComment 
+            key={index}
+            review={review.comment} 
+            date={review.date_review} 
+            name={review.name}
+            average_review={review.average_rating} 
+            count_review={review.review_count_by_user} 
+          />
+        ))}
         <AddReviewSection />
       </div>
       <AsidePurchase min_price={tour.price_per_person.toString()} />
