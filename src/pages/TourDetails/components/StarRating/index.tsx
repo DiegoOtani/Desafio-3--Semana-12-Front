@@ -19,7 +19,7 @@ const StarRating = ({ name, onChange }: StarRatingProps) => {
           key={value}
           size={24}
           style={{ cursor: "pointer", marginRight: 10 }}
-          color={value <= rating ? "#fc5056" : "rgba(5, 16, 54, 0.4)"}
+          color={value <= rating ? "#fc5056" : "rgba(5, 16, 54, 0.2)"}
           onClick={() => handleClick(value)}
         />
       ))}
