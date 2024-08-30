@@ -13,7 +13,7 @@ const TourCard = ({ tour_id, ulrImg, tour_name, average_review, review_count, du
   };
 
   return (
-    <Link to={`/tour/${tour_id}`} key={tour_id} className='w-full bg-white flex flex-col items-center justify-center relative px-6 pb-6'>
+    <div key={tour_id} className='w-full bg-white flex flex-col items-center justify-center relative px-6 pb-6'>
       <button
         className='absolute bg-white rounded-full p-4 top-4 right-10 hover:text-red-600'
         onClick={handleHeartClick}
@@ -25,7 +25,7 @@ const TourCard = ({ tour_id, ulrImg, tour_name, average_review, review_count, du
         )}
       </button>
       <img src={ulrImg} className='h-60 w-full' alt="Tour" />
-      <div 
+      <Link  to={`/tour/${tour_id}`}
         className=' bg-surface w-full p-4 flex flex-col justify-between gap-2 font-bold'
         >
         <p className='text-secondary-40 pt-2 text-h6'>{city}, {country_name}</p>
@@ -44,8 +44,8 @@ const TourCard = ({ tour_id, ulrImg, tour_name, average_review, review_count, du
           Starting from 
           <span className='text-black text-h6 font-italic font-semibold'>${price_per_person}</span>
         </p>
-      </div>
-    </Link>
+      </Link>
+    </div>
   );
 };
 
