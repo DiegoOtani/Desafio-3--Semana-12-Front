@@ -3,6 +3,7 @@ import { FiUser } from "react-icons/fi";
 import { FaPinterestP, FaTwitter, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import Logo from '../Logo';
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return <header className='w-full'>
@@ -25,13 +26,13 @@ const Header = () => {
     <div className='flex w-full px-10 py-4 justify-between font-title font-normal items-center'>
       <nav className='flex justify-between w-[55%] items-center text-h6 font-medium text-brand_1'>
         <Logo />
-        <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>Home</a>
-        <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>About</a>
-        <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>Tours</a>
-        <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>Destination</a>
-        <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>Blog</a>
-        <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>Pages</a>
-        <a href="#" className='hover:underline decoration-brand_2 underline-offset-4'>Contact</a>
+        <Link to="/" className='hover:underline decoration-brand_2 underline-offset-4'>Home</Link>
+        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>About</Link>
+        <Link to="/tour" className='hover:underline decoration-brand_2 underline-offset-4'>Tours</Link>
+        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>Destination</Link>
+        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>Blog</Link>
+        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>Pages</Link>
+        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>Contact</Link>
       </nav>
       <div className='flex text-brand_1 gap-4'>
         <button type='button'>
