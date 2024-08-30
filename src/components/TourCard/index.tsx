@@ -3,6 +3,7 @@ import Stars from '../Stars';
 import { FaRegClock } from 'react-icons/fa6';
 import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { TourReturned } from '../../interfaces/Tour';
+import { Link } from 'react-router-dom';
 
 const TourCard = ({ tour_id, ulrImg, tour_name, average_review, review_count, duration, price_per_person, city, country_name  }: TourReturned) => {
   const [isHeartFilled, setIsHeartFilled] = useState(false);
@@ -12,7 +13,7 @@ const TourCard = ({ tour_id, ulrImg, tour_name, average_review, review_count, du
   };
 
   return (
-    <a href={`/tour/${tour_id}`} key={tour_id} className='w-full bg-white flex flex-col items-center justify-center relative px-6 pb-6'>
+    <Link to={`/tour/${tour_id}`} key={tour_id} className='w-full bg-white flex flex-col items-center justify-center relative px-6 pb-6'>
       <button
         className='absolute bg-white rounded-full p-4 top-4 right-10 hover:text-red-600'
         onClick={handleHeartClick}
@@ -44,7 +45,7 @@ const TourCard = ({ tour_id, ulrImg, tour_name, average_review, review_count, du
           <span className='text-black text-h6 font-italic font-semibold'>${price_per_person}</span>
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 
