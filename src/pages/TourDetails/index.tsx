@@ -106,7 +106,7 @@ const TourDetails = () => {
             count_review={review.review_count_by_user} 
           />
         ))}
-        <AddReviewSection />
+        <AddReviewSection tour_id={tour.tour_id}/>
       </div>
       <AsidePurchase min_price={tour.price_per_person.toString()} />
     </main>

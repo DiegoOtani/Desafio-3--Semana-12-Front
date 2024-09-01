@@ -2,8 +2,13 @@ import { useEffect, useState } from "react";
 import StarRating from "../../components/StarRating";
 import SubmitButton from "../../../../components/SubmitButton";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
+import ReviewService from "../../../../services/api/reviewService";
 
-const AddReviewSection = () => {
+type AddReviewSectionPros = {
+  tour_id: string;
+};
+
+const AddReviewSection = ({ tour_id }: AddReviewSectionPros) => {
   const [userId, setUserId] = useState<string | null>("");
   const [name ,setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -39,6 +44,37 @@ const AddReviewSection = () => {
     }));
   };
 
+  const handleSubmit = async() => {
+    if(!userId) return;
+
+    const totalRatings = Object.values(rating).reduce((a, b) => a + b);
+    const average = parseFloat((totalRatings / Object.keys(rating).length).toFixed(1));
+
+    const reviewData = {
+      name,
+      email, 
+      comment,
+      services: rating.services,
+      locations: rating.locations,
+      amenities: rating.amenities,
+      prices: rating.prices,
+      food: rating.food,
+      room_comfort_quality: rating.comfort,
+      average,
+      date_review: new Date().toISOString(),
+      user_id: userId,
+      tour_id,
+    };
+
+    try {
+      console.log(reviewData);
+      const result = await ReviewService.postReview(reviewData);
+      console.log(result);
+    } catch (error) {
+      console.error("Failed to post review:", error);
+    }
+  };
+
   return <section className="bg-surface p-10">
     <h2 className="text-secondary font-extrabold text-h5 pb-2">Add a review</h2>
     <div className="grid grid-cols-4">
@@ -47,6 +83,7 @@ const AddReviewSection = () => {
       <StarRating onChange={handleRatingChange("amenities")} name="Amenities" key="Amenities"/>
       <StarRating onChange={handleRatingChange("prices")} name="Prices" key="Prices"/>
       <StarRating onChange={handleRatingChange("comfort")} name="Room comfort and quality" key="Room comfort and quality"/>
+      <StarRating onChange={handleRatingChange("food")} name="Food" key="Food"/>
     </div>
     <form className="w-full flex flex-col gap-4 pt-10 text-bodyColor text-h6">
       <div className="w-full flex gap-10">
@@ -72,7 +109,7 @@ const AddReviewSection = () => {
         value={comment}
         onChange={handleChange}
       />
-      <SubmitButton size="very small" onClick={() => console.log(rating.prices)} text="Submit review"/>
+      <SubmitButton size="very small" onClick={handleSubmit} text="Submit review"/>
     </form>
   </section>
 };
