@@ -7,7 +7,11 @@ import { FiSearch } from "react-icons/fi";
 import SubmitButton from "../../../../components/SubmitButton";
 import { CountryByContinent } from "../../../../interfaces/Country";
 
-const Filters = () => {
+type FilterProps = {
+  onCategoryChange: (category: string, isChecked: boolean) => void;
+};
+
+const Filters = ({ onCategoryChange }: FilterProps) => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
   const [price, setPrice] = useState<number>(0);
   const [countriesByCont, setCountriesByCont] = useState<CountryByContinent[]>([]);
@@ -21,7 +25,6 @@ const Filters = () => {
       try {
         const data = await CountryService.getCountriesByCont();
         setCountriesByCont(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       };
@@ -78,7 +81,7 @@ const Filters = () => {
       </div>
       <SubmitButton onClick={() => console.log('submit')} text="Submit" size="small"/>
     </div>
-    <Categories title="Categories" categories={types.map(type => type.type_name)}/>
+    <Categories title="Categories" categories={types.map(type => type.type_name)} onCategoryChange={onCategoryChange}/>
     <div className="bg-surface flex flex-col text-h6 font-body">
       <h3 className="font-extrabold pt-6 px-10">Destinations</h3>
       {countriesByCont.map((continentData) => (
@@ -86,10 +89,15 @@ const Filters = () => {
           key={continentData.continent} 
           subtitle={continentData.continent} 
           categories={continentData.countries.map(country => country.name)}
+          onCategoryChange={() => console.log('a')}
         />
       ))}
     </div>
-    <Categories title="Reviews" categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '3 Stars & Up', '1 Stars & Up',]}/>
+    <Categories 
+      title="Reviews" 
+      categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '3 Stars & Up', '1 Stars & Up',]}
+      onCategoryChange={() => console.log('')}  
+    />
   </aside>
 };
 
