@@ -6,9 +6,10 @@ import ReviewService from "../../../../services/api/reviewService";
 
 type AddReviewSectionPros = {
   tour_id: string;
+  onReviewAdd: () => Promise<void>;
 };
 
-const AddReviewSection = ({ tour_id }: AddReviewSectionPros) => {
+const AddReviewSection = ({ tour_id, onReviewAdd }: AddReviewSectionPros) => {
   const [userId, setUserId] = useState<string | null>("");
   const [name ,setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -16,7 +17,7 @@ const AddReviewSection = ({ tour_id }: AddReviewSectionPros) => {
   const [rating, setRating] = useState<{[key: string]: number}>({
     services: 0,
     locations: 0,
-    amentities: 0,
+    amenities: 0,
     prices: 0,
     comfort: 0,
   });
@@ -61,15 +62,24 @@ const AddReviewSection = ({ tour_id }: AddReviewSectionPros) => {
       food: rating.food,
       room_comfort_quality: rating.comfort,
       average,
-      date_review: new Date().toISOString(),
+      date_review:new Date().toISOString().split("T")[0],
       user_id: userId,
       tour_id,
     };
 
     try {
-      console.log(reviewData);
-      const result = await ReviewService.postReview(reviewData);
-      console.log(result);
+      await ReviewService.postReview(reviewData);
+      onReviewAdd();
+      setName("");
+      setEmail("");
+      setComment("");
+      setRating({
+        services: 0, 
+        locations: 0,
+        amenities: 0,
+        prices: 0,
+        comfort: 0,
+      })
     } catch (error) {
       console.error("Failed to post review:", error);
     }
@@ -78,12 +88,42 @@ const AddReviewSection = ({ tour_id }: AddReviewSectionPros) => {
   return <section className="bg-surface p-10">
     <h2 className="text-secondary font-extrabold text-h5 pb-2">Add a review</h2>
     <div className="grid grid-cols-4">
-      <StarRating onChange={handleRatingChange("services")} name="Services" key="Services"/>
-      <StarRating onChange={handleRatingChange("locations")} name="Locations" key="Locations"/>
-      <StarRating onChange={handleRatingChange("amenities")} name="Amenities" key="Amenities"/>
-      <StarRating onChange={handleRatingChange("prices")} name="Prices" key="Prices"/>
-      <StarRating onChange={handleRatingChange("comfort")} name="Room comfort and quality" key="Room comfort and quality"/>
-      <StarRating onChange={handleRatingChange("food")} name="Food" key="Food"/>
+      <StarRating 
+        onChange={handleRatingChange("services")} 
+        value={rating.services}
+        name="Services" 
+        key="Services"
+      />
+      <StarRating 
+        onChange={handleRatingChange("locations")} 
+        value={rating.locations}
+        name="Locations" 
+        key="Locations"
+      />
+      <StarRating 
+        onChange={handleRatingChange("amenities")} 
+        value={rating.amenities}
+        name="Amenities" 
+        key="Amenities"
+      />
+      <StarRating 
+        onChange={handleRatingChange("prices")} 
+        value={rating.prices}
+        name="Prices" 
+        key="Prices"
+      />
+      <StarRating 
+        onChange={handleRatingChange("comfort")} 
+        value={rating.comfort}
+        name="Room comfort and quality" 
+        key="Room comfort and quality"
+      />
+      <StarRating 
+        onChange={handleRatingChange("food")} 
+        value={rating.food}
+        name="Food" 
+        key="Food"
+      />
     </div>
     <form className="w-full flex flex-col gap-4 pt-10 text-bodyColor text-h6">
       <div className="w-full flex gap-10">
