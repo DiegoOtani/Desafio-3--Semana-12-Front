@@ -45,18 +45,23 @@ const TourDetails = () => {
     loadTour();
   }, [id, navigate]);
 
-  useEffect(() => {
-    const loadReviews = async() => {
-      try {
-        const data = await ReviewService.getReviewsById(id);
-        console.log(data);
-        if(data) setReviews(data);
-      } catch (error) {
-        console.error(error);
-      };
+  const loadReviews = async() => {
+    try {
+      const data = await ReviewService.getReviewsById(id);
+      console.log(data);
+      if(data) setReviews(data);
+    } catch (error) {
+      console.error(error);
     };
+  };
+
+  useEffect(() => {
     loadReviews();
   }, [id]);
+
+  const refreshReviews = async() => {
+    await loadReviews();
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -88,7 +93,7 @@ const TourDetails = () => {
           max_people={tour.max_people.toString()} 
           min_age={tour.min_age.toString()} 
           types={tour.types} 
-          average={tour.average_review?.toString() || 'N/A'} 
+          average={tour.average_review?.toFixed(1).toString() || 'N/A'} 
           count_review={tour.review_count?.toString()}
         />
         <OverviewSection overview={tour.overview}/>
@@ -106,7 +111,7 @@ const TourDetails = () => {
             count_review={review.review_count_by_user} 
           />
         ))}
-        <AddReviewSection tour_id={tour.tour_id}/>
+        <AddReviewSection tour_id={tour.tour_id} onReviewAdd={refreshReviews}/>
       </div>
       <AsidePurchase min_price={tour.price_per_person.toString()} />
     </main>
