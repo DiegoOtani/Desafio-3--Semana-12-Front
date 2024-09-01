@@ -53,11 +53,11 @@ const ReviewSection = () => {
   return (
     <section className="w-[100%] flex justify-center items-center gap-4">
       <div className="bg-brand_2 flex flex-col justify-center items-center text-white font-body py-[75px] px-16">
-        <span className="text-large font-bold">{reviewAvg.avg_overall.toFixed(1)}</span>
+        <span className="text-large font-bold">{reviewAvg.avg_overall?.toFixed(1) || "N/A"}</span>
         <div className="flex justify-center items-center gap-2">
           <FaStar size={20} />
           <span className="text-h6 font-title">
-            {getSatisfactionLevel(reviewAvg.avg_overall)}
+            {!reviewAvg.avg_overall ? "N/A" : getSatisfactionLevel(reviewAvg.avg_overall)}
           </span>
         </div>
       </div>
