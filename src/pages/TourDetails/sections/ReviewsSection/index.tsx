@@ -53,7 +53,7 @@ const ReviewSection = () => {
   return (
     <section className="w-[100%] flex justify-center items-center gap-4">
       <div className="bg-brand_2 flex flex-col justify-center items-center text-white font-body py-[75px] px-16">
-        <span className="text-large font-bold">{reviewAvg.avg_overall}</span>
+        <span className="text-large font-bold">{reviewAvg.avg_overall.toFixed(1)}</span>
         <div className="flex justify-center items-center gap-2">
           <FaStar size={20} />
           <span className="text-h6 font-title">
@@ -62,12 +62,12 @@ const ReviewSection = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 p-6 gap-x-10 gap-y-2 w-[70%]">
-        <ReviewResult categorie="Services" rating={reviewAvg.avg_services?.toString() || "N/A"} />
-        <ReviewResult categorie="Prices" rating={reviewAvg.avg_prices?.toString() || "N/A"} />
-        <ReviewResult categorie="Locations" rating={reviewAvg.avg_locations?.toString() || "N/A"} />
-        <ReviewResult categorie="Food" rating={reviewAvg.avg_food?.toString() || "N/A"} />
-        <ReviewResult categorie="Amenities" rating={reviewAvg.avg_amenities?.toString() || "N/A"} />
-        <ReviewResult categorie="Room comfort and quality" rating={reviewAvg.avg_room_comfort_quality?.toString() || "N/A"} />
+        <ReviewResult categorie="Services" rating={reviewAvg.avg_services?.toFixed(1).toString() || "N/A"} />
+        <ReviewResult categorie="Prices" rating={reviewAvg.avg_prices?.toFixed(1).toString() || "N/A"} />
+        <ReviewResult categorie="Locations" rating={reviewAvg.avg_locations?.toFixed(1).toString() || "N/A"} />
+        <ReviewResult categorie="Food" rating={reviewAvg.avg_food?.toFixed(1).toString() || "N/A"} />
+        <ReviewResult categorie="Amenities" rating={reviewAvg.avg_amenities?.toFixed(1).toString() || "N/A"} />
+        <ReviewResult categorie="Room comfort and quality" rating={reviewAvg.avg_room_comfort_quality?.toFixed(1).toString() || "N/A"} />
       </div>
     </section>
   );
