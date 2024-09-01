@@ -15,3 +15,36 @@ export interface ReviewUserReturnded {
   comment: string;
   review_count_by_user: number;
 };
+
+export interface CompleteReview {
+  id: string;
+  name: string;
+  email: string;
+  comment: string;
+  services: number;
+  locations: number;
+  amenities: number;
+  prices: number;
+  food: number;
+  room_comfort_quality: number;
+  average: number;
+  date_review: string;
+  user_id: string;
+  tour_id: string;
+};
+
+export interface PostReview {
+  name: string;
+  email: string;
+  comment: string;
+  services: number;
+  locations: number;
+  amenities: number;
+  prices: number;
+  food: number;
+  room_comfort_quality: number;
+  average: number;
+  date_review: string;
+  user_id: string;
+  tour_id: string;
+};
