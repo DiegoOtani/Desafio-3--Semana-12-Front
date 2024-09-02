@@ -19,14 +19,15 @@ class TourService {
 
   static async getToursByPage(page: number, limit: number, categories: string[], destinations: string[], rating: string[]) {
     try {
-      console.log(rating)
+      const maxRating = rating.length ? Math.max(...rating.map(r => parseInt(r.split(' ')[0], 10))) : null;
+      console.log(maxRating)
       const response = await api.get('/tour/page', {
         params: {
           page,
           limit,
           categories: categories.length ? categories.join(",") : undefined,
           destinations: destinations.length ? destinations.join(",") : undefined,
-          ratings: rating.length ? rating.join(",") : undefined
+          rating: maxRating 
         }
       });
       return response.data;

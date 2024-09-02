@@ -91,6 +91,9 @@ const Tour = () => {
                 <option value="Title" selected>
                   Title
                 </option>
+                <option value="Price">
+                  Price
+                </option>
               </select>
             </div>
           </div>
