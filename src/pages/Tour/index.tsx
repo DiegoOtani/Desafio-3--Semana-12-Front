@@ -6,8 +6,12 @@ import TourService from "../../services/api/toursService";
 import TourCard from "../../components/TourCard";
 import Pagination from "./components/Pagination";
 import { FaArrowDownLong } from "react-icons/fa6";
+import { useSearchParams } from "react-router-dom";
 
 const Tour = () => {
+  const [searchParams] = useSearchParams();
+  const categorie = searchParams.get('categorie');
+  const country = searchParams.get('country');
   const [tours, setTours] = useState<TourReturned[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -16,8 +20,8 @@ const Tour = () => {
   const [error, setError] = useState<string | null>(null);
   const limit = 9;
 
-  const [categories, setCategories] = useState<string[]>([]);
-  const [destinations, setDestinations] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>(categorie ? [categorie] : []);
+  const [destinations, setDestinations] = useState<string[]>(country ? [country] : []);
   const [rating, setRating] = useState<string[]>([]);
 
   useEffect(() => {
@@ -29,6 +33,7 @@ const Tour = () => {
       setLoading(true);
       setError(null);
       try {
+        console.log(categories)
         const data = await TourService.getToursByPage(currentPage, limit, categories, destinations, rating);
         setTours(data.tours);
         setTotalPages(data.totalPages);
@@ -63,11 +68,10 @@ const Tour = () => {
 
   const handleRatingChange = (rating: string, isChecked: boolean) => {
     setRating(prevRating => {
-      const ratingValue = rating.split(' ')[0];
       if (isChecked) {
-        return [...prevRating, ratingValue];
+        return [...prevRating, rating];
       } else {
-        return prevRating.filter(pRating => pRating !== ratingValue);
+        return prevRating.filter(pRating => pRating !== rating);
       }
     });
   };
@@ -77,6 +81,9 @@ const Tour = () => {
       <NavSection previousPages={[{ name: 'Home', to: '/' }]} actualPage="Tour Package" />
       <main className="bg-white flex gap-6 p-32">
         <Filters 
+          categories={categories}
+          destinations={destinations}
+          reviews={rating}
           onCategoryChange={handleCategorieChange} 
           onDestinationChange={handelDestinationChange}
           onRatingChange={handleRatingChange}

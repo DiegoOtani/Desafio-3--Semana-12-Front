@@ -1,6 +1,6 @@
 import { CheckboxProps } from './types';
 
-const Checkbox = ({ value, handleChange }: CheckboxProps) => {
+const Checkbox = ({ value, handleChange, checked }: CheckboxProps) => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     handleChange(e.target.checked);
   };
@@ -10,6 +10,7 @@ const Checkbox = ({ value, handleChange }: CheckboxProps) => {
       className='hidden peer'
       type="checkbox" 
       value={value}
+      checked={checked}
       onChange={handleInputChange}
     />
     <div className='w-4 h-4 border-2 border-bodyColor rounded peer-checked:bg-brand_2 peer-focus:ring'></div>

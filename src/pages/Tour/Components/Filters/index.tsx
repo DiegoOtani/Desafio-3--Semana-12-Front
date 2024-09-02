@@ -8,7 +8,14 @@ import SubmitButton from "../../../../components/SubmitButton";
 import { CountryByContinent } from "../../../../interfaces/Country";
 import { FilterProps } from "./types";
 
-const Filters = ({ onCategoryChange, onDestinationChange, onRatingChange }: FilterProps) => {
+const Filters = ({ 
+    onCategoryChange, 
+    onDestinationChange, 
+    onRatingChange, 
+    categories, 
+    destinations, 
+    reviews 
+  }: FilterProps) => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
   const [price, setPrice] = useState<number>(0);
   const [countriesByCont, setCountriesByCont] = useState<CountryByContinent[]>([]);
@@ -78,7 +85,13 @@ const Filters = ({ onCategoryChange, onDestinationChange, onRatingChange }: Filt
       </div>
       <SubmitButton onClick={() => console.log('submit')} text="Submit" size="small"/>
     </div>
-    <Categories title="Categories" categories={types.map(type => type.type_name)} onCategoryChange={onCategoryChange}/>
+    <Categories 
+      key={'Categories'}
+      title="Categories" 
+      categories={types.map(type => type.type_name)} 
+      selectedItems={categories}
+      onCategoryChange={onCategoryChange}
+    />
     <div className="bg-surface flex flex-col text-h6 font-body">
       <h3 className="font-extrabold pt-6 px-10">Destinations</h3>
       {countriesByCont.map((continentData) => (
@@ -86,6 +99,7 @@ const Filters = ({ onCategoryChange, onDestinationChange, onRatingChange }: Filt
           key={continentData.continent} 
           subtitle={continentData.continent} 
           categories={continentData.countries.map(country => country.name)}
+          selectedItems={destinations}
           onCategoryChange={onDestinationChange}
         />
       ))}
@@ -93,6 +107,7 @@ const Filters = ({ onCategoryChange, onDestinationChange, onRatingChange }: Filt
     <Categories 
       title="Reviews" 
       categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '2 Stars & Up', '1 Stars & Up',]}
+      selectedItems={reviews}
       onCategoryChange={onRatingChange}  
     />
   </aside>
