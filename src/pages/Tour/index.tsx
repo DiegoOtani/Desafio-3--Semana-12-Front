@@ -1,6 +1,6 @@
 import NavSection from "../../components/NavSection";
 import Filters from "./components/Filters";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { TourReturned } from "../../interfaces/Tour";
 import TourService from "../../services/api/toursService";
 import TourCard from "../../components/TourCard";
@@ -23,10 +23,8 @@ const Tour = () => {
   const [categories, setCategories] = useState<string[]>(categorie ? [categorie] : []);
   const [destinations, setDestinations] = useState<string[]>(country ? [country] : []);
   const [rating, setRating] = useState<string[]>([]);
-
-  useEffect(() => {
-    console.log(categories, destinations, rating)
-  }, [categories, destinations, rating])
+  const [price, setPrice] = useState<number>(0);
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
     const loadTours = async () => {
@@ -34,7 +32,7 @@ const Tour = () => {
       setError(null);
       try {
         console.log(categories)
-        const data = await TourService.getToursByPage(currentPage, limit, categories, destinations, rating);
+        const data = await TourService.getToursByPage(currentPage, limit, categories, destinations, rating, search, price);
         setTours(data.tours);
         setTotalPages(data.totalPages);
         setTotalTours(data.total);
@@ -46,7 +44,7 @@ const Tour = () => {
       }
     };
     loadTours();
-  }, [currentPage, categories, destinations, rating]);
+  }, [currentPage, categories, destinations, rating, search, price]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -76,17 +74,30 @@ const Tour = () => {
     });
   };
 
+  const handleRadioChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(Number(e.target.value));
+  };
+
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  };
+
   return (  
     <>
       <NavSection previousPages={[{ name: 'Home', to: '/' }]} actualPage="Tour Package" />
       <main className="bg-white flex gap-6 p-32">
         <Filters 
+          key={"Filters"}
+          search={search}
+          price={price}
           categories={categories}
           destinations={destinations}
           reviews={rating}
+          onSearchChange={handleSearchChange}
           onCategoryChange={handleCategorieChange} 
           onDestinationChange={handelDestinationChange}
           onRatingChange={handleRatingChange}
+          onRadioChange={handleRadioChange}
         />
         <section className="min-w-[75%] flex flex-col ">
           <div className="w-full flex justify-between text-secondary-40 p-6 text-h6 font-body">

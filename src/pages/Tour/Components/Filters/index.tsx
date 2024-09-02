@@ -12,17 +12,16 @@ const Filters = ({
     onCategoryChange, 
     onDestinationChange, 
     onRatingChange, 
+    onRadioChange,
+    onSearchChange,
     categories, 
     destinations, 
-    reviews 
+    reviews,
+    price,
+    search
   }: FilterProps) => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
-  const [price, setPrice] = useState<number>(0);
   const [countriesByCont, setCountriesByCont] = useState<CountryByContinent[]>([]);
-
-  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(Number(e.target.value));
-  };
 
   useEffect(() => {
     const loadCount = async() => {
@@ -57,6 +56,8 @@ const Filters = ({
         <input 
         className="w-full focus:outline-none"
           type="text" 
+          value={search}
+          onChange={onSearchChange}
           placeholder="Type anything..."
         />
         <FiSearch size={28}/>
@@ -73,7 +74,7 @@ const Filters = ({
         max={500}
         step={1}
         value={price}
-        onChange={handleRadioChange}
+        onChange={onRadioChange}
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand_2"
         style={{
           background: `linear-gradient(to right, #FC5056 ${price / 5}%, #e0e0e0 ${price / 5}%)`

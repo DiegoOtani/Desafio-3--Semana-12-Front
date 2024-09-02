@@ -17,17 +17,26 @@ class TourService {
     }
   };
 
-  static async getToursByPage(page: number, limit: number, categories: string[], destinations: string[], rating: string[]) {
+  static async getToursByPage(
+      page: number, 
+      limit: number, 
+      categories: string[], 
+      destinations: string[], 
+      rating: string[],
+      search: string,
+      price: number,
+    ) {
     try {
       const maxRating = rating.length ? Math.max(...rating.map(r => parseInt(r.split(' ')[0], 10))) : null;
-      console.log(maxRating)
       const response = await api.get('/tour/page', {
         params: {
           page,
           limit,
           categories: categories.length ? categories.join(",") : undefined,
           destinations: destinations.length ? destinations.join(",") : undefined,
-          rating: maxRating 
+          rating: maxRating ,
+          search,
+          price,
         }
       });
       return response.data;
