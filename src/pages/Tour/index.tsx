@@ -18,7 +18,12 @@ const Tour = () => {
 
   const [categories, setCategories] = useState<string[]>([]);
   const [destinations, setDestinations] = useState<string[]>([]);
-  
+  const [rating, setRating] = useState<string[]>([]);
+
+  useEffect(() => {
+    console.log(categories, destinations, rating)
+  }, [categories, destinations, rating])
+
   useEffect(() => {
     const loadTours = async () => {
       setLoading(true);
@@ -56,11 +61,22 @@ const Tour = () => {
     ));
   };
 
+  const handleRatingChange = (rating: string, isChecked: boolean) => {
+    setRating((prevRating => isChecked
+        ? [...prevRating, rating.split(' ')[0]]
+        : prevRating.filter((pRating) => pRating !== rating)
+    ));
+  };
+
   return (  
     <>
       <NavSection previousPages={[{ name: 'Home', to: '/' }]} actualPage="Tour Package" />
       <main className="bg-white flex gap-6 p-32">
-        <Filters onCategoryChange={handleCategorieChange} onDestinationChange={handelDestinationChange}/>
+        <Filters 
+          onCategoryChange={handleCategorieChange} 
+          onDestinationChange={handelDestinationChange}
+          onRatingChange={handleRatingChange}
+        />
         <section className="min-w-[75%] flex flex-col ">
           <div className="w-full flex justify-between text-secondary-40 p-6 text-h6 font-body">
             <span>{totalTours} Tours</span>

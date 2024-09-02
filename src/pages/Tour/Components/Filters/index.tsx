@@ -6,13 +6,9 @@ import CountryService from "../../../../services/api/countriesService";
 import { FiSearch } from "react-icons/fi";
 import SubmitButton from "../../../../components/SubmitButton";
 import { CountryByContinent } from "../../../../interfaces/Country";
+import { FilterProps } from "./types";
 
-type FilterProps = {
-  onCategoryChange: (category: string, isChecked: boolean) => void;
-  onDestinationChange: (destination: string, isChecked: boolean) => void;
-};
-
-const Filters = ({ onCategoryChange, onDestinationChange }: FilterProps) => {
+const Filters = ({ onCategoryChange, onDestinationChange, onRatingChange }: FilterProps) => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
   const [price, setPrice] = useState<number>(0);
   const [countriesByCont, setCountriesByCont] = useState<CountryByContinent[]>([]);
@@ -97,7 +93,7 @@ const Filters = ({ onCategoryChange, onDestinationChange }: FilterProps) => {
     <Categories 
       title="Reviews" 
       categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '3 Stars & Up', '1 Stars & Up',]}
-      onCategoryChange={() => console.log('')}  
+      onCategoryChange={onRatingChange}  
     />
   </aside>
 };
