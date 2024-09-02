@@ -10,8 +10,8 @@ import { useSearchParams } from "react-router-dom";
 
 const Tour = () => {
   const [searchParams] = useSearchParams();
-  const categorie = searchParams.get('categorie');
-  const country = searchParams.get('country');
+  
+
   const [tours, setTours] = useState<TourReturned[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalPages, setTotalPages] = useState<number>(0);
@@ -20,11 +20,20 @@ const Tour = () => {
   const [error, setError] = useState<string | null>(null);
   const limit = 9;
 
-  const [categories, setCategories] = useState<string[]>(categorie ? [categorie] : []);
-  const [destinations, setDestinations] = useState<string[]>(country ? [country] : []);
+  const [categories, setCategories] = useState<string[]>([]);
+  const [destinations, setDestinations] = useState<string[]>([]);
   const [rating, setRating] = useState<string[]>([]);
   const [price, setPrice] = useState<number>(0);
-  const [search, setSearch] = useState<string>("");
+  const [search, setSearch] = useState<string>('');
+
+  useEffect(() => {
+    const categorie = searchParams.get('categorie');
+    const country = searchParams.get('country');
+    const searchValue = searchParams.get('search');
+    setCategories(categorie ? [categorie] : []);
+    setDestinations(country ? [country] : []);
+    setSearch(searchValue ? searchValue : '');
+  }, [searchParams]);
 
   useEffect(() => {
     const loadTours = async () => {
