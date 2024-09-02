@@ -17,24 +17,29 @@ class TourService {
     }
   };
 
-  static async getToursByPage(page: number, limit: number) {
+  static async getToursByPage(page: number, limit: number, categories: string[], destinations: string[], rating: string[]) {
     try {
+      console.log(rating)
       const response = await api.get('/tour/page', {
         params: {
           page,
-          limit
+          limit,
+          categories: categories.length ? categories.join(",") : undefined,
+          destinations: destinations.length ? destinations.join(",") : undefined,
+          ratings: rating.length ? rating.join(",") : undefined
         }
       });
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        console.error('Error fetching types:', error.message);
+        console.error('Error fetching tours:', error.message);
       } else {
         console.error('Unexpected error:', error);
       }
       throw error;
     }
   };
+  
 
   static async getTourById(id: string | undefined) {
     if(id === undefined) return;

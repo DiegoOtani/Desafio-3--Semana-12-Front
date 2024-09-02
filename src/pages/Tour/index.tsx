@@ -29,7 +29,7 @@ const Tour = () => {
       setLoading(true);
       setError(null);
       try {
-        const data = await TourService.getToursByPage(currentPage, limit);
+        const data = await TourService.getToursByPage(currentPage, limit, categories, destinations, rating);
         setTours(data.tours);
         setTotalPages(data.totalPages);
         setTotalTours(data.total);
@@ -41,7 +41,7 @@ const Tour = () => {
       }
     };
     loadTours();
-  }, [currentPage]);
+  }, [currentPage, categories, destinations, rating]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -62,10 +62,14 @@ const Tour = () => {
   };
 
   const handleRatingChange = (rating: string, isChecked: boolean) => {
-    setRating((prevRating => isChecked
-        ? [...prevRating, rating.split(' ')[0]]
-        : prevRating.filter((pRating) => pRating !== rating)
-    ));
+    setRating(prevRating => {
+      const ratingValue = rating.split(' ')[0];
+      if (isChecked) {
+        return [...prevRating, ratingValue];
+      } else {
+        return prevRating.filter(pRating => pRating !== ratingValue);
+      }
+    });
   };
 
   return (  
