@@ -17,7 +17,8 @@ const Tour = () => {
   const limit = 9;
 
   const [categories, setCategories] = useState<string[]>([]);
-
+  const [destinations, setDestinations] = useState<string[]>([]);
+  
   useEffect(() => {
     const loadTours = async () => {
       setLoading(true);
@@ -48,11 +49,18 @@ const Tour = () => {
     ));
   };
 
+  const handelDestinationChange = (destination: string, isChecked: boolean) => {
+    setDestinations((prevDestination => isChecked 
+      ? [...prevDestination, destination] 
+      :  prevDestination.filter((pDestination) => pDestination !== destination)
+    ));
+  };
+
   return (  
     <>
       <NavSection previousPages={[{ name: 'Home', to: '/' }]} actualPage="Tour Package" />
       <main className="bg-white flex gap-6 p-32">
-        <Filters onCategoryChange={handleCategorieChange}/>
+        <Filters onCategoryChange={handleCategorieChange} onDestinationChange={handelDestinationChange}/>
         <section className="min-w-[75%] flex flex-col ">
           <div className="w-full flex justify-between text-secondary-40 p-6 text-h6 font-body">
             <span>{totalTours} Tours</span>

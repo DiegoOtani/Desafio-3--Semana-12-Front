@@ -9,9 +9,10 @@ import { CountryByContinent } from "../../../../interfaces/Country";
 
 type FilterProps = {
   onCategoryChange: (category: string, isChecked: boolean) => void;
+  onDestinationChange: (destination: string, isChecked: boolean) => void;
 };
 
-const Filters = ({ onCategoryChange }: FilterProps) => {
+const Filters = ({ onCategoryChange, onDestinationChange }: FilterProps) => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
   const [price, setPrice] = useState<number>(0);
   const [countriesByCont, setCountriesByCont] = useState<CountryByContinent[]>([]);
@@ -89,7 +90,7 @@ const Filters = ({ onCategoryChange }: FilterProps) => {
           key={continentData.continent} 
           subtitle={continentData.continent} 
           categories={continentData.countries.map(country => country.name)}
-          onCategoryChange={() => console.log('a')}
+          onCategoryChange={onDestinationChange}
         />
       ))}
     </div>
