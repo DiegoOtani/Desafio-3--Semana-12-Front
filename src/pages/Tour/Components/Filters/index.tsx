@@ -92,7 +92,7 @@ const Filters = ({ onCategoryChange, onDestinationChange, onRatingChange }: Filt
     </div>
     <Categories 
       title="Reviews" 
-      categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '3 Stars & Up', '1 Stars & Up',]}
+      categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '2 Stars & Up', '1 Stars & Up',]}
       onCategoryChange={onRatingChange}  
     />
   </aside>
