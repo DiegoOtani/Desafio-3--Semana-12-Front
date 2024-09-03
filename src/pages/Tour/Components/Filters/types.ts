@@ -6,6 +6,7 @@ export type FilterProps = {
   onRatingChange: (rating: string, isChecked: boolean) => void;
   onRadioChange: (e: React.ChangeEvent<HTMLInputElement> ) => void;
   onSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onPriceSubmit: () => void;
   categories: string[];
   destinations: string[];
   reviews: string[];

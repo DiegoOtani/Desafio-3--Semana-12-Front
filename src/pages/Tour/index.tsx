@@ -23,6 +23,7 @@ const Tour = () => {
   const [destinations, setDestinations] = useState<string[]>([]);
   const [rating, setRating] = useState<string[]>([]);
   const [price, setPrice] = useState<number>(0);
+  const [priceFilter, setPriceFilter] = useState<number>(price);
   const [search, setSearch] = useState<string>('');
   const [date, setDate] = useState<string>("");
   
@@ -42,7 +43,7 @@ const Tour = () => {
       setLoading(true);
       setError(null);
       try {
-        const data = await TourService.getToursByPage(currentPage, limit, categories, destinations, rating, search, price, date);
+        const data = await TourService.getToursByPage(currentPage, limit, categories, destinations, rating, search, priceFilter, date);
         setTours(data.tours);
         setTotalPages(data.totalPages);
         setTotalTours(data.total);
@@ -54,7 +55,7 @@ const Tour = () => {
       }
     };
     loadTours();
-  }, [currentPage, categories, destinations, rating, search, price, date]);
+  }, [currentPage, categories, destinations, rating, search, priceFilter, date]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
@@ -92,6 +93,10 @@ const Tour = () => {
     setSearch(e.target.value);
   };
 
+  const handlePriceSubmit = () => {
+    setPriceFilter(price);
+  }
+
   return (  
     <>
       <NavSection previousPages={[{ name: 'Home', to: '/' }]} actualPage="Tour Package" />
@@ -108,6 +113,7 @@ const Tour = () => {
           onDestinationChange={handelDestinationChange}
           onRatingChange={handleRatingChange}
           onRadioChange={handleRadioChange}
+          onPriceSubmit={handlePriceSubmit}
         />
         <section className="min-w-[75%] flex flex-col ">
           <div className="w-full flex justify-between text-secondary-40 p-6 text-h6 font-body">

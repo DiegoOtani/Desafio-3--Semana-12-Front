@@ -14,6 +14,7 @@ const Filters = ({
     onRatingChange, 
     onRadioChange,
     onSearchChange,
+    onPriceSubmit,
     categories, 
     destinations, 
     reviews,
@@ -84,7 +85,7 @@ const Filters = ({
         <span>$0.00</span>
         <span className="font-extrabold">${price}.00</span>
       </div>
-      <SubmitButton onClick={() => console.log('submit')} text="Submit" size="small"/>
+      <SubmitButton onClick={onPriceSubmit} text="Submit" size="small"/>
     </div>
     <Categories 
       key={'Categories'}
