@@ -43,7 +43,7 @@ const TourDetails = () => {
     };
 
     loadTour();
-  }, [id, navigate]);
+  }, [id, navigate, reviews]);
 
   const loadReviews = async() => {
     try {
@@ -98,7 +98,7 @@ const TourDetails = () => {
         <OverviewSection overview={tour.overview}/>
         <MapSection coordinates={coordinates} city="Rio de Janeiro" country="Brasil" />
         <h1 className="text-h5 font-extrabold text-secondary font-title">Average Reviews</h1>
-        <ReviewSection />
+        <ReviewSection reviews={reviews}/>
         <h1 className="text-h5 font-extrabold text-secondary font-title">Showing {reviews.length} review</h1>
         {reviews.map((review, index) => (
           <ReviewComment 

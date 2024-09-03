@@ -1,11 +1,15 @@
 import { FaStar } from "react-icons/fa6";
 import ReviewResult from "../../components/ReviewResult";
-import { ReviewReturned } from "../../../../interfaces/review";
+import { ReviewReturned, ReviewUserReturnded } from "../../../../interfaces/review";
 import { useState, useEffect } from "react";
 import ReviewService from "../../../../services/api/reviewService";
 import { useParams } from "react-router-dom";
 
-const ReviewSection = () => {
+type ReviewSectionProps = {
+  reviews: ReviewUserReturnded[];
+}
+
+const ReviewSection = ({ reviews }: ReviewSectionProps) => {
   const { id } = useParams();
 
   const [reviewAvg, setReviewAvg] = useState<ReviewReturned | undefined | null>(null);
@@ -28,7 +32,7 @@ const ReviewSection = () => {
     };
 
     loadReviewAvg();
-  }, [id]);
+  }, [id, reviews]);
 
   const getSatisfactionLevel = (average: number): string => {
     if (average >= 4.5) return "Excellent";
