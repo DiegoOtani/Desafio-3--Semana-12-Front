@@ -17,7 +17,7 @@ const TypesSection = () => {
         const data = await TypesService.getTypes();
         setTypes(data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     loadTypes();

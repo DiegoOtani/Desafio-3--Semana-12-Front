@@ -23,7 +23,7 @@ export interface TourReturned {
   overview: string;
   location: string;
   ulrImg: string;
-  types: string[];
+  types: string;
   review_count: number;
   average_review: number;
 };

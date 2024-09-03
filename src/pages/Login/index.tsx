@@ -1,27 +1,39 @@
-import React, { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Form from './components/Form/Form';
 import { loginWithEmailAndPassword, registerWithEmailAndPassword } from '../../services/firebase/firebaseService';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 const Login = () => {
+  const navigate = useNavigate();
   const [ haveLogin, setHaveLogin ] = useState<boolean>(true);
   const [ email, setEmail ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('');
+  const auth = getAuth();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if(user) navigate('/');      
+    })
+    return () => unsubscribe();
+  }, [auth, navigate]);
 
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value);
-  }
+  };
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.target.value);
-  }
+  };
 
   const handleLogin = async() => {
     const { user, error: firebaseError } = await loginWithEmailAndPassword(email, password);
     setEmail('');
     setPassword('');
     return firebaseError || !user
-      ? console.log(firebaseError)
-      : console.log(user);
+      ? toast.error(firebaseError ||  'Login failed. Please try again.')
+      : toast.success("Login successful!") &&  navigate('/');
   };
 
   const handleRegister = async() => {
@@ -29,11 +41,11 @@ const Login = () => {
     setEmail('');
     setPassword('');
     return firebaseError || !user
-      ? console.log(firebaseError)
-      : console.log(user);
+      ? toast.error(firebaseError ||  'Login failed. Please try again.')
+      : toast.success("Register successful!") &&  navigate('/');
   };
 
-  return <main className="w-full h-full flex flex-col items-center justify-center bg-[url(https://www.vestibulandoweb.com.br/wp-content/uploads/2024/01/viagem-ia.jpg)] bg-cover bg-center">
+  return <main className="w-full h-full flex flex-col items-center justify-center bg-[url(https://firebasestorage.googleapis.com/v0/b/trisog-travels.appspot.com/o/viagem.jpg?alt=media&token=2cfaba70-3dd2-43ef-b51c-0ac9a4123271)] bg-cover bg-center">
     {haveLogin ? (
       <Form 
       title='Sign in'
@@ -63,7 +75,6 @@ const Login = () => {
         inputPasswordValue={password}
       />
     )}
-    
   </main>
 }
 

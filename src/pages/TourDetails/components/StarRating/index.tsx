@@ -1,10 +1,14 @@
 import { FaStar } from "react-icons/fa";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StarRatingProps } from "./types";
 
-const StarRating = ({ name, onChange }: StarRatingProps) => {
+const StarRating = ({ name, onChange, value }: StarRatingProps) => {
   const [rating,setRating] = useState<number>(0);
   const starValues = [1, 2, 3, 4, 5];
+
+  useEffect(() => {
+    setRating(value); // Atualiza o estado interno sempre que o valor da prop mudar
+  }, [value]);
 
   const handleClick = (ratingValue: number) => {
     setRating(ratingValue);

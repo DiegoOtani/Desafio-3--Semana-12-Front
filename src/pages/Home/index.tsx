@@ -22,7 +22,7 @@ const Home = () => {
         const data = await TypesService.getTypes();
         setTypes(data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
     loadTypes();
@@ -34,7 +34,7 @@ const Home = () => {
         const data = await TourService.getTours();
         setTours(data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       };
     };
     loadTours();

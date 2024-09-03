@@ -6,22 +6,29 @@ import CountryService from "../../../../services/api/countriesService";
 import { FiSearch } from "react-icons/fi";
 import SubmitButton from "../../../../components/SubmitButton";
 import { CountryByContinent } from "../../../../interfaces/Country";
+import { FilterProps } from "./types";
 
-const Filters = () => {
+const Filters = ({ 
+    onCategoryChange, 
+    onDestinationChange, 
+    onRatingChange, 
+    onRadioChange,
+    onSearchChange,
+    onPriceSubmit,
+    categories, 
+    destinations, 
+    reviews,
+    price,
+    search
+  }: FilterProps) => {
   const [types, setTypes] = useState<TypesReceived[]>([]);
-  const [price, setPrice] = useState<number>(0);
   const [countriesByCont, setCountriesByCont] = useState<CountryByContinent[]>([]);
-
-  const handleRadioChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(Number(e.target.value));
-  };
 
   useEffect(() => {
     const loadCount = async() => {
       try {
         const data = await CountryService.getCountriesByCont();
         setCountriesByCont(data);
-        console.log(data);
       } catch (error) {
         console.error(error);
       };
@@ -50,6 +57,8 @@ const Filters = () => {
         <input 
         className="w-full focus:outline-none"
           type="text" 
+          value={search}
+          onChange={onSearchChange}
           placeholder="Type anything..."
         />
         <FiSearch size={28}/>
@@ -66,7 +75,7 @@ const Filters = () => {
         max={500}
         step={1}
         value={price}
-        onChange={handleRadioChange}
+        onChange={onRadioChange}
         className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand_2"
         style={{
           background: `linear-gradient(to right, #FC5056 ${price / 5}%, #e0e0e0 ${price / 5}%)`
@@ -76,9 +85,15 @@ const Filters = () => {
         <span>$0.00</span>
         <span className="font-extrabold">${price}.00</span>
       </div>
-      <SubmitButton onClick={() => console.log('submit')} text="Submit" size="small"/>
+      <SubmitButton onClick={onPriceSubmit} text="Submit" size="small"/>
     </div>
-    <Categories title="Categories" categories={types.map(type => type.type_name)}/>
+    <Categories 
+      key={'Categories'}
+      title="Categories" 
+      categories={types.map(type => type.type_name)} 
+      selectedItems={categories}
+      onCategoryChange={onCategoryChange}
+    />
     <div className="bg-surface flex flex-col text-h6 font-body">
       <h3 className="font-extrabold pt-6 px-10">Destinations</h3>
       {countriesByCont.map((continentData) => (
@@ -86,10 +101,17 @@ const Filters = () => {
           key={continentData.continent} 
           subtitle={continentData.continent} 
           categories={continentData.countries.map(country => country.name)}
+          selectedItems={destinations}
+          onCategoryChange={onDestinationChange}
         />
       ))}
     </div>
-    <Categories title="Reviews" categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '3 Stars & Up', '1 Stars & Up',]}/>
+    <Categories 
+      title="Reviews" 
+      categories={['5 Stars', '4 Stars & Up', '3 Stars & Up', '2 Stars & Up', '1 Stars & Up',]}
+      selectedItems={reviews}
+      onCategoryChange={onRatingChange}  
+    />
   </aside>
 };
 
