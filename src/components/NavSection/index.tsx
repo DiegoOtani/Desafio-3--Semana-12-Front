@@ -4,7 +4,7 @@ import { NavSectionProps } from "./types";
 import { useState, useEffect } from "react";
 import TypesService from "../../services/api/typesService";
 import { TypesReceived } from "../../interfaces/Types";
-
+import React from "react";
 
 const NavSection = ({ previousPages, actualPage }: NavSectionProps) => {
 
@@ -16,7 +16,7 @@ const NavSection = ({ previousPages, actualPage }: NavSectionProps) => {
         const data = await TypesService.getTypes();
         setTypes(data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       };
     }
     loadTypes();
@@ -32,12 +32,12 @@ const NavSection = ({ previousPages, actualPage }: NavSectionProps) => {
     </h1>
     <nav className="flex gap-2 text-h6 font-body font-bold text-white z-10">
       {previousPages.map(page => (
-        <>
-          <Link to={page.to}  className="">
+        <React.Fragment key={page.name}>
+          <Link to={page.to}>
             {page.name}
           </Link>
           <span>/</span>
-        </>
+        </React.Fragment>
         
       ))}
       

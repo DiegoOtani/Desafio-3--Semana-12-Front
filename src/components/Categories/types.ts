@@ -1,5 +1,7 @@
-export type CategoriesProps = {
+export type CategoriesProps<T> = {
   title?: string;
   subtitle?: string;
-  categories: string[];
-}
+  categories: T[];
+  onCategoryChange: (category: T, isChecked: boolean) => (void);
+  selectedItems: T[];
+};

@@ -1,5 +1,5 @@
 export type SubmitButtonProps = {
   onClick: () => void;
   text: string;
-  size?: 'large' | 'small';
+  size?: 'large' | 'small' | 'very small';
 }

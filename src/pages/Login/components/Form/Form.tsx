@@ -7,6 +7,8 @@ import { AiOutlineMail } from "react-icons/ai";
 import { FcGoogle } from "react-icons/fc";
 import { FormProps } from './types';
 import { signWithGoogle, signInWithFacebook } from '../../../../services/firebase/firebaseService';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Form = (
   { 
@@ -22,18 +24,20 @@ const Form = (
     inputEmailValue,
     inputPasswordValue    
   }: FormProps) => {
+  const navigate = useNavigate();
+  
   const handleGoogleLogin = async() => {
     const { user , error: firebaseError} = await signWithGoogle();
     return firebaseError || !user 
-      ? console.log(firebaseError)
-      : console.log(user);
+      ? toast.error(firebaseError ||  'Login failed. Please try again.')
+      : toast.success("Login successful!") && navigate('/');
   };
 
   const handleFacebookLogin = async() => {
     const { user, error: firebaseError } = await signInWithFacebook();
     return firebaseError || !user
-      ? console.log(firebaseError)
-      : console.log(user);
+      ? toast.error(firebaseError ||  'Login failed. Please try again.')
+      : toast.success("Login successful!") &&  navigate('/');
   };
 
   return <form className='w-[30%] min-h-[600px] max-h-[60%] p-10 bg-surface border border-black rounded flex flex-col justify-between'>
