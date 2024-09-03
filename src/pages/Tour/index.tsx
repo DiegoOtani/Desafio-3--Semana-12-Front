@@ -57,6 +57,10 @@ const Tour = () => {
     loadTours();
   }, [currentPage, categories, destinations, rating, search, priceFilter, date]);
 
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [categories, destinations, rating, search, priceFilter, date]);
+
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
   };
