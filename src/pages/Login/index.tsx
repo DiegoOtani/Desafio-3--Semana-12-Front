@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Form from './components/Form/Form';
 import { loginWithEmailAndPassword, registerWithEmailAndPassword } from '../../services/firebase/firebaseService';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
   const [ haveLogin, setHaveLogin ] = useState<boolean>(true);
   const [ email, setEmail ] = useState<string>('');
   const [ password, setPassword ] = useState<string>('');
@@ -21,7 +23,7 @@ const Login = () => {
     setPassword('');
     return firebaseError || !user
       ? console.log(firebaseError)
-      : console.log(user);
+      : navigate('/');
   };
 
   const handleRegister = async() => {
@@ -30,7 +32,7 @@ const Login = () => {
     setPassword('');
     return firebaseError || !user
       ? console.log(firebaseError)
-      : console.log(user);
+      : navigate('/');
   };
 
   return <main className="w-full h-full flex flex-col items-center justify-center bg-[url(https://www.vestibulandoweb.com.br/wp-content/uploads/2024/01/viagem-ia.jpg)] bg-cover bg-center">
