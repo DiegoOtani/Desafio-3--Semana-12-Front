@@ -5,7 +5,7 @@ import { TypesReceived } from "../../interfaces/Types";
 class TypesService {
   static async getTypes(): Promise<TypesReceived[]> {
     try {
-      const response = await api.get<{types: TypesReceived[]}>('/type');
+      const response = await api.get<{types: TypesReceived[]}>('/types');
       return response.data.types;
     } catch (error) {
       if (axios.isAxiosError(error)) {

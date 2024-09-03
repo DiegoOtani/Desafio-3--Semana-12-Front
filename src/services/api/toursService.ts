@@ -5,7 +5,7 @@ import { TourReturned } from "../../interfaces/Tour";
 class TourService {
   static async getTours() {
     try {
-      const response = await api.get<{tours: TourReturned[]}>('/tour');
+      const response = await api.get<{tours: TourReturned[]}>('/tours');
       return response.data.tours;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -30,7 +30,7 @@ class TourService {
     ) {
     try {
       const maxRating = rating.length ? Math.max(...rating.map(r => parseInt(r.split(' ')[0], 10))) : null;
-      const response = await api.get('/tour/page', {
+      const response = await api.get('/tours/page', {
         params: {
           page,
           limit,
@@ -57,7 +57,7 @@ class TourService {
   static async getTourById(id: string | undefined) {
     if(id === undefined) return;
     try {
-      const response = await api.get(`/tour/${id}`);
+      const response = await api.get(`/tours/${id}`);
       return response.data.tour;
     } catch (error) {
       if (axios.isAxiosError(error)) {
