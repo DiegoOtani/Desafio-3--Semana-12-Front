@@ -12,6 +12,8 @@ const SearchBar = ({ options }: SearchBarProps) => {
   
   const [search, setSearch] = useState<string>("");
   const [type, setType] = useState<string>("");
+  const [date, setDate] = useState<string>("");
+  const [guests, setGuests] = useState<string>("");
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
@@ -21,10 +23,20 @@ const SearchBar = ({ options }: SearchBarProps) => {
     setType(e.target.value);
   };
 
+  const handleDateChange = (e :React.ChangeEvent<HTMLInputElement>) => {
+    setDate(e.target.value);
+  };
+
+  const handleGuestsChange = (e :React.ChangeEvent<HTMLInputElement>) => {
+    setGuests(e.target.value);
+  };
+
   const handleSubmit = () => {
-    navigate(`/tour?search=${search}&categorie=${type}`);
+    navigate(`/tour?search=${search}&categorie=${type}&date=${date}`);
     setSearch('');
     setType('');
+    setDate('');
+    setGuests('');
   };
 
   return <div className="flex justify-between items-end gap-4 w-[80%] bg-white p-8 rounded-3xl z-10 absolute bottom-[-70px] shadow-lg">
@@ -54,8 +66,24 @@ const SearchBar = ({ options }: SearchBarProps) => {
         </select>
       </div>
     </div>
-    <InputField Icon={FiUsers} onChange={(e) => console.log(e)} placeholder="0" type="date" inputName="When" size="large" value=""/>
-    <InputField Icon={FiUsers} onChange={(e) => console.log(e)} placeholder="0" type="text" inputName="Guests" size="large" value=""/>
+    <InputField 
+      Icon={FiUsers} 
+      onChange={handleDateChange}
+      placeholder="0"
+      type="date"
+      inputName="When"
+      size="large"
+      value={date}
+    />
+    <InputField 
+      Icon={FiUsers} 
+      onChange={handleGuestsChange}
+      placeholder="0" 
+      type="number"
+      inputName="Guests"
+      size="large" 
+      value={guests}
+    />
     <SubmitButton text="Search" onClick={handleSubmit} size="small"/>
   </div>
 }

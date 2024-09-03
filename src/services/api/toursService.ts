@@ -25,6 +25,7 @@ class TourService {
       rating: string[],
       search: string,
       price: number,
+      date: string,
     ) {
     try {
       const maxRating = rating.length ? Math.max(...rating.map(r => parseInt(r.split(' ')[0], 10))) : null;
@@ -37,6 +38,7 @@ class TourService {
           rating: maxRating ,
           search,
           price,
+          date
         }
       });
       return response.data;

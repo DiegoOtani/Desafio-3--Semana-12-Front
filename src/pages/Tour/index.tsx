@@ -10,7 +10,6 @@ import { useSearchParams } from "react-router-dom";
 
 const Tour = () => {
   const [searchParams] = useSearchParams();
-  
 
   const [tours, setTours] = useState<TourReturned[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -25,14 +24,17 @@ const Tour = () => {
   const [rating, setRating] = useState<string[]>([]);
   const [price, setPrice] = useState<number>(0);
   const [search, setSearch] = useState<string>('');
-
+  const [date, setDate] = useState<string>("");
+  
   useEffect(() => {
     const categorie = searchParams.get('categorie');
     const country = searchParams.get('country');
     const searchValue = searchParams.get('search');
+    const date = searchParams.get('date');
     setCategories(categorie ? [categorie] : []);
     setDestinations(country ? [country] : []);
     setSearch(searchValue ? searchValue : '');
+    setDate(date ? date : '');
   }, [searchParams]);
 
   useEffect(() => {
@@ -40,20 +42,19 @@ const Tour = () => {
       setLoading(true);
       setError(null);
       try {
-        console.log(categories)
-        const data = await TourService.getToursByPage(currentPage, limit, categories, destinations, rating, search, price);
+        const data = await TourService.getToursByPage(currentPage, limit, categories, destinations, rating, search, price, date);
         setTours(data.tours);
         setTotalPages(data.totalPages);
         setTotalTours(data.total);
       } catch (error) {
         setError("Failed to load tours. Please try again later.");
-        console.log(error);
+        console.error(error);
       } finally {
         setLoading(false);
       }
     };
     loadTours();
-  }, [currentPage, categories, destinations, rating, search, price]);
+  }, [currentPage, categories, destinations, rating, search, price, date]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
