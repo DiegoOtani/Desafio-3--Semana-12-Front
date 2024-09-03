@@ -6,6 +6,7 @@ import { TbLocation } from "react-icons/tb";
 import FastLinks from '../FastLinks';
 import InputField from '../InputField';
 import SubmitButton from '../SubmitButton';
+import { toast } from 'react-toastify';
 
 const Footer = () => {
   const [ email, setEmail ] = useState<string>('');
@@ -26,6 +27,7 @@ const Footer = () => {
 
   const handleSubmit = () => {
     setEmail('');
+    return !emailRegex.test(email) ? toast.error("Invalid Emal") : toast.success("Sign Up Sucessfully!");
   }
 
   return <footer className='flex justify-center items-top bg-black text-white w-full h-auto pt-32 pb-10 px-10'>
