@@ -24,7 +24,7 @@ const NavSection = ({ previousPages, actualPage }: NavSectionProps) => {
 
   return <section className={`
       relative w-full flex flex-col items-center justify-center min-h-40 
-      bg-[url('/background-baloon.jpg')] bg-cover bg-center h-screen max-h-[350px]
+      bg-[url('https://firebasestorage.googleapis.com/v0/b/trisog-travels.appspot.com/o/bg.jpeg?alt=media&token=efb10064-49be-414c-95d2-a0d4c9ee6589')] bg-cover bg-center h-screen max-h-[350px]
     `}>
     <div className="absolute inset-0 bg-black opacity-60"></div>
     <h1 className="text-large font-title text-white font-bold z-10">
