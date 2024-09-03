@@ -26,6 +26,7 @@ class TourService {
       search: string,
       price: number,
       date: string,
+      sortBy: string,
     ) {
     try {
       const maxRating = rating.length ? Math.max(...rating.map(r => parseInt(r.split(' ')[0], 10))) : null;
@@ -38,7 +39,8 @@ class TourService {
           rating: maxRating ,
           search,
           price,
-          date
+          date,
+          sortBy
         }
       });
       return response.data;
@@ -52,7 +54,6 @@ class TourService {
     }
   };
   
-
   static async getTourById(id: string | undefined) {
     if(id === undefined) return;
     try {

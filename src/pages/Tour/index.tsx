@@ -27,6 +27,8 @@ const Tour = () => {
   const [search, setSearch] = useState<string>('');
   const [date, setDate] = useState<string>("");
   
+  const [sortBy, setSortBy] = useState<string>("Title");
+
   useEffect(() => {
     const categorie = searchParams.get('categorie');
     const country = searchParams.get('country');
@@ -38,12 +40,26 @@ const Tour = () => {
     setDate(date ? date : '');
   }, [searchParams]);
 
+  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortBy(e.target.value);
+  }
+
   useEffect(() => {
     const loadTours = async () => {
       setLoading(true);
       setError(null);
       try {
-        const data = await TourService.getToursByPage(currentPage, limit, categories, destinations, rating, search, priceFilter, date);
+        const data = await TourService.getToursByPage(
+          currentPage, 
+          limit, 
+          categories, 
+          destinations, 
+          rating, 
+          search, 
+          priceFilter, 
+          date, 
+          sortBy
+        );
         setTours(data.tours);
         setTotalPages(data.totalPages);
         setTotalTours(data.total);
@@ -55,7 +71,7 @@ const Tour = () => {
       }
     };
     loadTours();
-  }, [currentPage, categories, destinations, rating, search, priceFilter, date]);
+  }, [currentPage, categories, destinations, rating, search, priceFilter, date, sortBy]);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -125,7 +141,12 @@ const Tour = () => {
             <div className="flex items-center">
               <span>Sort by</span>
               <FaArrowDownLong color="051036"/>
-              <select id="sort-by" className="border focus:outline-none rounded p-1 pr-32">
+              <select 
+                id="sort-by" 
+                className="border focus:outline-none rounded p-1 pr-32"
+                value={sortBy}
+                onChange={handleSortChange}
+              >
                 <option value="Title" selected>
                   Title
                 </option>

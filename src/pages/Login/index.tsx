@@ -45,7 +45,7 @@ const Login = () => {
       : toast.success("Register successful!") &&  navigate('/');
   };
 
-  return <main className="w-full h-full flex flex-col items-center justify-center bg-[url(https://www.vestibulandoweb.com.br/wp-content/uploads/2024/01/viagem-ia.jpg)] bg-cover bg-center">
+  return <main className="w-full h-full flex flex-col items-center justify-center bg-[url(https://firebasestorage.googleapis.com/v0/b/trisog-travels.appspot.com/o/viagem.jpg?alt=media&token=2cfaba70-3dd2-43ef-b51c-0ac9a4123271)] bg-cover bg-center">
     {haveLogin ? (
       <Form 
       title='Sign in'
