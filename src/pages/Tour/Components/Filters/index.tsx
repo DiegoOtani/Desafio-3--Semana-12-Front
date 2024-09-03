@@ -48,7 +48,7 @@ const Filters = ({
     loadTypes();
   }, []);
 
-  return <aside className="w-full bg-white flex flex-col gap-10">
+  return <aside className="w-full bg-white flex flex-col gap-6">
     <div className="w-full bg-surface flex flex-col gap-2 p-10 text-h6 font-body">
       <label className="font-extrabold">
         Search

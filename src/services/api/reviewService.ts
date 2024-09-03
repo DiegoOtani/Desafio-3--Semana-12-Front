@@ -6,7 +6,7 @@ class ReviewService {
   static async getReviewAverageByTourId (tourId: string | undefined) {
     try {
       if(tourId === undefined) return;
-      const response = await api.get<{review: ReviewReturned}>(`/review/avg/${tourId}`);
+      const response = await api.get<{review: ReviewReturned}>(`/reviews/avg/${tourId}`);
       return response.data.review;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -21,7 +21,7 @@ class ReviewService {
   static async getReviewsById(tourId: string | undefined) {
     try {
       if(tourId === undefined) return;
-      const response = await api.get<{reviews: ReviewUserReturnded[]}>(`/review/tour/${tourId}`);
+      const response = await api.get<{reviews: ReviewUserReturnded[]}>(`/reviews/tour/${tourId}`);
       return response.data.reviews;
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -35,7 +35,7 @@ class ReviewService {
 
   static async postReview(reviewData: PostReview) {
     try {
-      const response = await api.post<{ review: CompleteReview, message:string }>(`/review`, reviewData);
+      const response = await api.post<{ review: CompleteReview, message:string }>(`/reviews`, reviewData);
       return response.data;
     } catch (error) {
       if (axios.isAxiosError(error)) {

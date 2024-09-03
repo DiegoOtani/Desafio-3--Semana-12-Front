@@ -7,9 +7,20 @@ import TourCard from "../../components/TourCard";
 import Pagination from "./components/Pagination";
 import { FaArrowDownLong } from "react-icons/fa6";
 import { useSearchParams } from "react-router-dom";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 
 const Tour = () => {
   const [searchParams] = useSearchParams();
+  const auth = getAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if(!user) navigate('/login');
+    })
+    return () => unsubscribe();
+  }, [auth, navigate]);
 
   const [tours, setTours] = useState<TourReturned[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
