@@ -57,7 +57,6 @@ class TourService {
     if(id === undefined) return;
     try {
       const response = await api.get(`/tour/${id}`);
-      console.log(response.data);
       return response.data.tour;
     } catch (error) {
       if (axios.isAxiosError(error)) {

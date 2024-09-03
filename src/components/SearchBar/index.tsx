@@ -59,9 +59,9 @@ const SearchBar = ({ options }: SearchBarProps) => {
           value={type}
           onChange={handleTypeChange}
         >
-          <option value="" disabled selected hidden>Activity</option>
+          <option value="" disabled hidden>Activity</option>
           {options.map(option => (
-            <option value={option}>{option}</option>
+            <option key={option} value={option}>{option}</option>
           ))}
         </select>
       </div>

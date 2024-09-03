@@ -48,7 +48,6 @@ const TourDetails = () => {
   const loadReviews = async() => {
     try {
       const data = await ReviewService.getReviewsById(id);
-      console.log(data);
       if(data) setReviews(data);
     } catch (error) {
       console.error(error);

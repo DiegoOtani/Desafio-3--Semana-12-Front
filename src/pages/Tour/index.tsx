@@ -48,7 +48,7 @@ const Tour = () => {
         setTotalTours(data.total);
       } catch (error) {
         setError("Failed to load tours. Please try again later.");
-        console.error(error);
+        console.error(error)
       } finally {
         setLoading(false);
       }

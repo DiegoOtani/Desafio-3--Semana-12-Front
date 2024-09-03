@@ -26,7 +26,6 @@ const Footer = () => {
 
   const handleSubmit = () => {
     setEmail('');
-    console.log(email);
   }
 
   return <footer className='flex justify-center items-top bg-black text-white w-full h-auto pt-32 pb-10 px-10'>
