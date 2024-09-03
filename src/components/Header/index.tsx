@@ -76,8 +76,7 @@ const Header = () => {
     {searchModal && <InputModal />}
     
   </header>
-}
-
+};
 
 const InputModal = () => {
   const [search, setSearch] = useState<string>("");
@@ -85,7 +84,7 @@ const InputModal = () => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
-  }
+  };
 
   const handleSubmit = () => {
     navigate(`/tour?search=${search}`);
@@ -107,7 +106,7 @@ const InputModal = () => {
       onClick={handleSubmit}
     />
   </div>
-}
+};
 
 
-export default Header
+export default Header;
