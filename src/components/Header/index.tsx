@@ -4,10 +4,39 @@ import { FaPinterestP, FaTwitter, FaLinkedinIn, FaGoogle } from "react-icons/fa"
 import { IoIosArrowDown } from "react-icons/io";
 import Logo from '../Logo';
 import { Link } from "react-router-dom";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import InputField from "../InputField";
+import SubmitButton from "../SubmitButton";
 
 const Header = () => {
-  return <header className='w-full'>
-    <div className='flex justify-between px-10 py-1 text-brand_1 bg-gray-100'>
+  const [user, setUser] = useState<string | null>(null);
+  const [searchModal, setSearchModal] = useState<boolean>(false);
+  const auth = getAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      return user ? setUser(user.uid) : setUser(null);      
+    })
+    return () => unsubscribe();
+  }, [user, auth]);
+
+  const handleLoginClick = () => {
+    return user 
+      ? signOut(auth).then(() => {
+        setUser(null);
+      })
+      : navigate('/login');
+  };
+
+  const handleChangeModal = () => {
+    setSearchModal(!searchModal);
+  };
+
+  return <header className='w-full flex flex-col items-center'>
+    <div className='w-full flex justify-between px-10 py-1 text-brand_1 bg-gray-100'>
       <p className='flex gap-4 text-body'>
         <span className='border-r border-brand_1 pr-4'>(000)999-898-999</span>
         <span>info@trisog.com</span>
@@ -35,16 +64,50 @@ const Header = () => {
         <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>Contact</Link>
       </nav>
       <div className='flex text-brand_1 gap-4'>
-        <button type='button'>
+        <button type='button' onClick={handleChangeModal}>
           <BiSearch size={24}/>
         </button>
-        <button className='flex font-bold gap-2'>
+        <button className='flex font-bold gap-2' onClick={handleLoginClick}>
           <FiUser size={24}/>
-          Login / Signup
+          {user ? "Logout" : "Login / SignUp"}
         </button>
       </div>
     </div>
+    {searchModal && <InputModal />}
+    
   </header>
 }
+
+
+const InputModal = () => {
+  const [search, setSearch] = useState<string>("");
+  const navigate = useNavigate();
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearch(e.target.value);
+  }
+
+  const handleSubmit = () => {
+    navigate(`/tour?search=${search}`);
+  };
+
+  return <div className="w-full flex bg-surface gap-4 items-center py-6 px-32">
+    <InputField 
+      key="InputFieldModal"
+      Icon={BiSearch} 
+      placeholder="Where to go?" 
+      type="text" 
+      value={search}
+      onChange={handleChange}
+      size="large"
+    />
+    <SubmitButton 
+      text="Submit"
+      size="very small"
+      onClick={handleSubmit}
+    />
+  </div>
+}
+
 
 export default Header
