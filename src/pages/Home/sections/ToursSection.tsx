@@ -8,7 +8,7 @@ type ToursSectionProps = {
 };
 
 const ToursSection = ({toursData}: ToursSectionProps) => {
-  return <section className="flex flex-col w-full jus gap-10 pt-20">
+  return <section className="flex flex-col w-full jus gap-10 p-20">
     <Titles colorTitle="black" size="medium" subtitle="Tours" title="Most Popular Tours"/>
     <Slider items={toursData} perPage={4} renderItem={TourCard}/> 
   </section>
