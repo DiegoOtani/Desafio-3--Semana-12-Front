@@ -1,9 +1,9 @@
-import { BiSearch } from "react-icons/bi";
+  import { BiSearch } from "react-icons/bi";
 import { FiUser } from "react-icons/fi";
 import { FaPinterestP, FaTwitter, FaLinkedinIn, FaGoogle } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
 import Logo from '../Logo';
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import InputField from "../InputField";
 import SubmitButton from "../SubmitButton";
 
 const Header = () => {
+  const location = useLocation();
   const [user, setUser] = useState<string | null>(null);
   const [searchModal, setSearchModal] = useState<boolean>(false);
   const auth = getAuth();
@@ -55,13 +56,19 @@ const Header = () => {
     <div className='flex w-full px-10 py-4 justify-between font-title font-normal items-center'>
       <nav className='flex justify-between w-[55%] items-center text-h6 font-medium text-brand_1'>
         <Logo />
-        <Link to="/" className='hover:underline decoration-brand_2 underline-offset-4'>Home</Link>
-        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>About</Link>
-        <Link to="/tour" className='hover:underline decoration-brand_2 underline-offset-4'>Tours</Link>
-        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>Destination</Link>
-        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>Blog</Link>
-        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>Pages</Link>
-        <Link to="#" className='hover:underline decoration-brand_2 underline-offset-4'>Contact</Link>
+        <Link to="/" className={`hover:underline decoration-brand_2 underline-offset-4 
+          ${location.pathname === '/' ? 'text-brand_2' : ''}`}>
+          Home
+        </Link>
+        <Link to="#" className={`hover:underline decoration-brand_2 underline-offset-4`}>About</Link>
+        <Link to="/tour" className={`hover:underline decoration-brand_2 underline-offset-4 
+          ${location.pathname === '/tour' ? 'text-brand_2' : ''}`}>
+          Tours
+        </Link>
+        <Link to="#" className={`hover:underline decoration-brand_2 underline-offset-4`}>Destination</Link>
+        <Link to="#" className={`hover:underline decoration-brand_2 underline-offset-4`}>Blog</Link>
+        <Link to="#" className={`hover:underline decoration-brand_2 underline-offset-4`}>Pages</Link>
+        <Link to="#" className={`hover:underline decoration-brand_2 underline-offset-4`}>Contact</Link>
       </nav>
       <div className='flex text-brand_1 gap-4'>
         <button type='button' onClick={handleChangeModal}>
