@@ -35,7 +35,7 @@ const Tour = () => {
   const [rating, setRating] = useState<string[]>([]);
   const [price, setPrice] = useState<number>(0);
   const [priceFilter, setPriceFilter] = useState<number>(price);
-  const [search, setSearch] = useState<string>('');
+  const [search, setSearch] = useState<string>(searchParams.get('search') || '');
   const [date, setDate] = useState<string>("");
   
   const [sortBy, setSortBy] = useState<string>("Title");
