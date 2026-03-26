@@ -9,6 +9,6 @@ export function createAPI() {
       'Content-Type': 'application/json',
     },
   });
-};  
+};
 
 export const api = createAPI();
