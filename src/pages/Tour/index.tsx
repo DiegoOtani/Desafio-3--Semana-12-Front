@@ -1,10 +1,10 @@
 import NavSection from "../../components/NavSection";
-import Filters from "./components/Filters/index";
+import Filters from "./components/Filters/index.tsx";
 import React, { useState, useEffect } from "react";
 import { TourReturned } from "../../interfaces/Tour";
 import TourService from "../../services/api/toursService";
-import TourCard from "../../components/TourCard/index";
-import Pagination from "./components/Pagination/index";
+import TourCard from "../../components/TourCard/index.tsx";
+import Pagination from "./components/Pagination/index.tsx";
 import { FaArrowDownLong } from "react-icons/fa6";
 import { useSearchParams } from "react-router-dom";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
