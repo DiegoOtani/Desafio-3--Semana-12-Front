@@ -1,4 +1,4 @@
-import PaginationButton from "../PaginationButton";
+import PaginationButton from "../PaginationButton/index";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 type PaginationProps = {
