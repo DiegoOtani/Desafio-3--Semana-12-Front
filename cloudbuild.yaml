@@ -6,12 +6,12 @@ steps:
     args: [
       'build',
       '-t',
-      'us-central1-docker.pkg.dev/project-1e5245c2-3c30-45c1-a6d/Desafio-3--Semana-12-Front/front',
+      'us-central1-docker.pkg.dev/project-1e5245c2-3c30-45c1-a6d/front',
       '.'
     ]
 
   - name: 'gcr.io/cloud-builders/docker'
     args: [
       'push',
-      'us-central1-docker.pkg.dev/project-1e5245c2-3c30-45c1-a6d/Desafio-3--Semana-12-Front/front'
+      'us-central1-docker.pkg.dev/project-1e5245c2-3c30-45c1-a6d/front'
     ]
